@@ -1,0 +1,140 @@
+............................................................
+.   GDVIS software created by: A.B. Thijssen               .
+.   Log file created on: 2025-09-19 13:06:56               .
+.   GDVIS mode used: 2D                                    .
+............................................................
+    
+    
+    
+Required input data
+------------------------------------------------------------
+h2_sub1.con                                   0.1606
+h2_se_sub1.con                                0.0139
+h2_sub2.con                                   0.0839
+h2_se_sub2.con                                0.0098
+rg_sub1.con_sub2.con                          0.6011
+rg_se_sub1.con_sub2.con                       0.061
+name_sub1                                     With childhood trauma
+N_sub1                                        14146
+name_sub2                                     without childhood trauma
+N_sub2                                        16285
+name_allcases                                 all MDD cases
+name_con                                      MDD controls
+plot_title                                    Childhood Trauma
+folder_location                               GDVIS_tutorial_examples
+filename                                      Childhood Trauma
+pop.prev_case                                 0.16
+    
+    
+Optional input data
+------------------------------------------------------------
+optional_LDSC_h2_sub1.sub2                    0.1036
+optional_LDSC_h2_se_sub1.sub2                 0.0162
+optional_LDSC_h2_allcases.con                 NA
+optional_LDSC_h2_se_allcases.con              NA
+optional_LDSC_rg_sub1.con_sub1.sub2           0.6995
+optional_LDSC_rg_se_sub1.con_sub1.sub2        0.0389
+optional_LDSC_rg_sub2.con_sub1.sub2           -0.1544
+optional_LDSC_rg_se_sub2.con_sub1.sub2        0.0983
+optional_LDSC_rg_allcases.con_sub1.con        0.9111
+optional_LDSC_rg_se_allcases.con_sub1.con     0.0167
+optional_LDSC_rg_allcases.con_sub2.con        0.8765
+optional_LDSC_rg_se_allcases.con_sub2.con     0.0198
+    
+    
+Calculated output data
+------------------------------------------------------------
+h2_sub1.sub2                                  0.105
+h2_allcases.con                               0.093
+rg_sub1.con_sub1.sub2                         0.7
+rg_sub2.con_sub1.sub2                         -0.151
+rg_allcases.con_sub1.con                      0.914
+rg_allcases.con_sub2.con                      0.873
+d_sub1.con                                    0.401
+d_sub2.con                                    0.29
+d_sub1.sub2                                   0.324
+d_allcases.con                                0.306
+d_allcases.sub1                               0.173
+d_allcases.sub2                               0.151
+a.rad_sub1.con_sub2.con                       0.926
+a.deg_sub1.con_sub2.con                       53.051
+a.rad_sub1.con_sub1.sub2                      0.796
+a.deg_sub1.con_sub1.sub2                      45.606
+a.rad_sub2.con_sub1.sub2                      1.722
+a.deg_sub2.con_sub1.sub2                      98.657
+a.rad_allcases.con_sub1.con                   0.417
+a.deg_allcases.con_sub1.con                   23.906
+a.rad_allcases.con_sub2.con                   0.509
+a.deg_allcases.con_sub2.con                   29.145
+coordinates_con                               (0,-0.049,0)
+coordinates_sub1                              (-0.162,0.317,0)
+coordinates_sub2                              (0.141,0.204,0)
+coordinates_allcases                          (0,0.257,0)
+coordinates_popmean                           (0,0,0)
+    
+    
+Check whether subgroups are genetically different
+------------------------------------------------------------
+When there is no suggested evidence of significant difference between subgroups, the triangle will not be plotted. Specifically, when rg is not significantly different from 1 (filter 1a) AND h2.sub1 is not clearly different from h2.sub2 (filter 1b and 1c), the triangle will not be plotted. In some occasions, a triangle will not be plotted while it would have been plotted with larger GWAS sample sizes (and therefore smaller standard errors). 
+    
+Filter 1a:
+The genetic correlation between With childhood trauma_MDD controls' and 'without childhood trauma_MDD controls' is significantly different from 1
+The upper bound is calculated as 0.6011 (the genetic correlation) + 1.96 * 0.061 (se) = 0.72066
+    
+Filter 1b:
+The heritability of 'With childhood trauma_MDD controls' does not lie within the confidence intervals of the heritability of 'without childhood trauma_MDD controls'
+The heritability of With childhood trauma_MDD controls is 0.1606, the interval of without childhood trauma_MDD controls is (0.065 - 0.103)
+    
+Filter 1c:
+The heritability of 'without childhood trauma_MDD controls' does not lie within the confidence intervals of the heritability of 'With childhood trauma_MDD controls'
+The heritability of 'without childhood trauma_MDD controls' is 0.0839, the interval is (0.133 - 0.188)
+    
+--> Filter 1 is passed: subgroups are genetically different from each other
+    
+Filter 2:
+The heritability of 'With childhood trauma_MDD controls' is significantly different from 0
+The heritability is 0.1606 with a lower bound of the confidence interval of 0.133
+--> Filter 2 is passed
+    
+Filter 3:
+The heritability of 'without childhood trauma_MDD controls' is significantly different from 0
+The heritabiltiy is 0.0839 where the lower bound of the confidence interval is 0.065
+--> Filter 3 is passed
+    
+    
+Optional double checks
+------------------------------------------------------------
+Double check 1:
+GDVIS calculated the heritability of With childhood trauma versus without childhood trauma as 0.1049
+The LDSC estimated value provided as input is 0.1036 (se = 0.0162)
+The GDVIS value lies within the 95% CI 0.1036 +- 1.96 * 0.0162.
+The difference between 0.1049 and 0.1036 is 0.0013, this is 0.0833 * se.
+    
+Double check 2:
+GDVIS calculated the heritability of allcases versus MDD controls as 0.0934
+No optional input for this check was provided. 
+    
+Double check 3a:
+GDVIS calculated the genetic correlation between With childhood trauma.vs.MDD controls and With childhood trauma.vs.without childhood trauma as 0.6996
+The LDSC estimated value provided as input is 0.6995 (se = 0.0389)
+The GDVIS value lies within the 95% CI +- 1.96 * 0.0389.
+The difference between 0.6996 and 0.6995 is 1e-04, this is 0.0022 * se.
+    
+Double check 3b:
+GDVIS calculated the genetic correlation between without childhood trauma.vs.MDD controls and With childhood trauma.vs.without childhood trauma as -0.1505
+The LDSC estimated value provided as input is -0.1544 (se = 0.0983)
+The GDVIS value lies within the 95%  CI +- 1.96 * 0.0389.
+The difference between -0.1505 and -0.1544 is 0.0039, this is 0.0394 * se.
+    
+Double check 4a:
+GDVIS calculated the genetic correlation between allcases.vs.MDD controls and With childhood trauma.vs.MDD controls as 0.9142
+The LDSC estimated value provided as input is 0.9111 (se = 0.0167)
+The GDVIS value lies within the 95% CI +- 1.96 * 0.0167.
+The difference between 0.9142 and 0.9111 is 0.0031, this is 0.0833 * se.
+    
+Double check 4b:
+GDVIS calculated the genetic correlation between allcases.vs.MDD controls and without childhood trauma.vs.MDD controls is calculated to be 0.8734
+The LDSC estimated value provided as input is 0.8765 (se = 0.0198)
+The GDVIS value lies within the CI +- 1.96 * 0.0198.
+The difference between 0.8734 and 0.8765 is -0.0031, this is 0.0833 * se.
+    

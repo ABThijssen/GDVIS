@@ -1,0 +1,106 @@
+............................................................
+.   GDVIS software created by: A.B. Thijssen               .
+.   Log file created on: 2025-09-19 13:06:56               .
+.   GDVIS mode used: 2D.2D                                 .
+............................................................
+    
+    
+Note that the 2D.2D mode will also output two individual 2D logfiles. This logfile is only for the 2D.2D relations
+    
+    
+Required input data
+------------------------------------------------------------
+triangle1.h2_sub1.con                         0.1606
+triangle1.h2_se_sub1.con                      0.0139
+triangle1.name_sub1                           With childhood trauma
+triangle1.N_sub1                              14146
+triangle1.h2_sub2.con                         0.0839
+triangle1.h2_se_sub2.con                      0.0098
+triangle1.name_sub2                           without childhood trauma
+triangle1.N_sub2                              16285
+triangle1.name_allcases                       all MDD cases
+triangle1.name_con                            MDD controls
+triangle1.rg_sub1.con_sub2.con                0.6011
+triangle1.rg_se_sub1.con_sub2.con             0.061
+triangle1.plot_title                          Childhood Trauma
+triangle1.folder_location                     GDVIS_tutorial_examples
+triangle1.filename                            Childhood Trauma
+triangle1.pop.prev_case                       0.16
+triangle2.h2_sub1.con                         0.1394
+triangle2.h2_se_sub1.con                      0.0147
+triangle2.name_sub1                           With anxiety
+triangle2.N_sub1                              11885
+triangle2.h2_sub2.con                         0.0798
+triangle2.h2_se_sub2.con                      0.0098
+triangle2.name_sub2                           without anxiety
+triangle2.N_sub2                              18546
+triangle2.name_allcases                       all MDD cases
+triangle2.name_con                            MDD controls
+triangle2.rg_sub1.con_sub2.con                0.8451
+triangle2.rg_se_sub1.con_sub2.con             0.072
+triangle2.plot_title                          Comorbid anxiety
+triangle2.folder_location                     GDVIS_tutorial_examples
+triangle2.filename                            Comorbid anxiety
+triangle2.pop.prev_case                       0.16
+rg_triangle1.sub1.sub2_triangle2.sub1.sub2    0.4084
+rg_se_triangle1.sub1.sub2_triangle2.sub1.sub2 0.1793
+rg_triangle1.sub1.con_triangle2.sub1.con      0.9139
+rg_se_triangle1.sub1.con_triangle2.sub1.con   0.0326
+rg_triangle1.sub2.con_triangle2.sub1.con      0.7831
+rg_se_triangle1.sub2.con_triangle2.sub1.con   0.0431
+rg_triangle1.sub1.con_triangle2.sub2.con      0.8452
+rg_se_triangle1.sub1.con_triangle2.sub2.con   0.0316
+rg_triangle1.sub2.con_triangle2.sub2.con      0.8882
+rg_se_triangle1.sub2.con_triangle2.sub2.con   0.0328
+    
+    
+Calculated output data
+------------------------------------------------------------
+triangle1.coordinates_sub1                    (-0.162,0.317,0)
+triangle1.coordinates_sub2                    (0.141,0.204,0)
+triangle1.coordinates_allcases                (0,0.257,0)
+triangle1.coordinates_con                     (0,-0.049,0)
+triangle1.coordinates_popmean                 (0,0,0)
+triangle2.coordinates_sub1                    (-0.042,0.307,-0.104)
+triangle2.coordinates_sub2                    (0.027,0.224,0.067)
+triangle2.coordinates_allcases                (0,0.257,0)
+triangle2.coordinates_con                     (0,-0.049,0)
+triangle2.coordinates_popmean                 (0,0,0)
+a.deg_rsub1.rsub2_sub1.sub2                   62
+a.deg_rsub1.con_sub1.con                      23
+a.deg_rsub1.con_sub2.con                      39
+a.deg_rsub2.con_sub1.con                      32
+a.deg_rsub2.con_sub2.con                      27
+    
+    
+Double checks
+------------------------------------------------------------
+Double check 1:
+GDVIS rotated Childhood Trauma based on the most precise rg estimate with Comorbid anxiety which was rg_triangle1.sub1.con_triangle2.sub2.con (0.8452 (se 0.0316)
+The second triangle needed to rotate 0.564 and rotated 0.564 which gives a rotation difference of 0
+    
+Double check 2:
+The provided rg of rg_triangle1.sub1.sub2_triangle2.sub1.sub2 is 0.4084
+After rotation the rg is 0.4635
+The difference is 0.0551 which is 0.3071 * se
+    
+Double check 3:
+The provided rg of rg_triangle1.sub1.con_triangle2.sub1.con is 0.9139
+After rotation the rg is 0.9175
+The difference is 0.0036 which is 0.1091 * se
+    
+Double check 4:
+The provided rg of rg_triangle1.sub2.con_triangle2.sub1.con is 0.7831
+After rotation the rg is 0.7778
+The difference is -0.0053 which is -0.1224 * se
+    
+Double check 5:
+The provided rg of rg_triangle1.sub1.con_triangle2.sub2.con is 0.8452
+After rotation the rg is 0.8452
+The difference is 0 which is 0 * se
+    
+Double check 6:
+The provided rg of rg_triangle1.sub2.con_triangle2.sub2.con is 0.8882
+After rotation the rg is 0.891
+The difference is 0.0028 which is 0.0856 * se
+    
