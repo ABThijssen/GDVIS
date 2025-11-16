@@ -541,7 +541,7 @@ GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, w
 
     # Save the Shiny app script as a .R file
     shiny_save_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_shiny_app.rds")) %>% gsub("^/", "", .)
-    saveRDS(shiny_app, file = shine_save_path)
+    saveRDS(shiny_app, file = shiny_save_path)
 
     # Save the UI and server components separately
     ui_save_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_ui.rds")) %>% gsub("^/", "", .)
