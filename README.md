@@ -3,6 +3,15 @@ GDVIS tutorial
 Anaïs Thijssen (<a.b.thijssen@gmail.com>)
 2025-11-16
 
+<!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/GDVIS)](https://CRAN.R-project.org/package=GDVIS)  
+[![R-CMD-check](https://github.com/ABThijssen/GDVIS/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ABThijssen/GDVIS/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 ------------------------------------------------------------------------
 
 # Welcome to this GDVIS tutorial
