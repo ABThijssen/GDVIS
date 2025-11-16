@@ -598,7 +598,7 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
                                         seq(from = max(0, coords_rough['z'] %>% dplyr::pull() - 0.04), to = coords_rough['z'] %>% dplyr::pull() + 0.04, by = 0.001) )
 
       # Coords finest if there are multiple peaks of best fit
-       coords_finest <- tibble()
+       coords_finest <- tibble::tibble()
 
        for (i in 1:nrow(coords_finer)) {
 
