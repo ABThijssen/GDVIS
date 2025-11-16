@@ -1,7 +1,7 @@
 GDVIS tutorial
 ================
 Anaïs Thijssen (<a.b.thijssen@gmail.com>)
-2025-11-11
+2025-11-16
 
 ------------------------------------------------------------------------
 
@@ -22,14 +22,11 @@ Check out the GDVIS website here: <https://gdvis.shinyapps.io/gdvis/>.
 
 # Download and install GDVIS
 
-\[to be added, for now source locally\]
-
 ``` r
-source("R/GDVIS_calc.R")
-source("R/GDVIS_plot_2D.R")
-source("R/GDVIS_plot_2D_2D.R")
-source("R/GDVIS_plot_3D.R")
-source("R/GDVIS_plot_CD.R")
+library(devtools)
+devtools::install_github("https://github.com/ABThijsen/GDVIS")
+
+library(GDVIS)
 ```
 
 ------------------------------------------------------------------------
@@ -164,16 +161,6 @@ find in the folder GDVIS_tutorial_output on the github.
 output <- GDVIS_calc(input.list)
 ```
 
-    ## 
-
-    ## ── Running GDVIS calc on Childhood Trauma ──────────────────────────────────────
-
-    ## ℹ  Data saved as GDVIS_tutorial_output/Childhood Trauma.minimum.2D.triangle_parameters.RData
-
-    ## ℹ  For more info see GDVIS_tutorial_output/Childhood Trauma.minimum.2D.log.txt
-
-    ## ✔ GDVIS calc succesfully finished!
-
 GDVIS_calc returns the path to an RData object, which we have put in the
 variable output (note that the RData object is also saved).  
 GDVIS_plot_2D takes as input the output generated from GDVIS_calc.  
@@ -190,22 +177,7 @@ the legend appear outside of the triangle).
 GDVIS_plot_2D(output, x_lower = -0.35, x_upper = 0.35, y_lower = -0.15, y_upper = 0.35)
 ```
 
-    ## 
-
-    ## ── Running GDVIS plot on Childhood Trauma ──────────────────────────────────────
-
-    ## Warning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2
-    ## 3.5.0.
-    ## ℹ Please use the `legend.position.inside` argument of `theme()` instead.
-    ## This warning is displayed once every 8 hours.
-    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-    ## generated.
-
-    ## ℹ  Plot saved as GDVIS_tutorial_output/Childhood Trauma.minimum_2D.triangle_plot.png
-
-    ## ✔ GDVIS plot succesfully finished
-
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+<img src="screenshot_2D.png" width="70%" style="display: block; margin: auto;" />
 
 ------------------------------------------------------------------------
 
@@ -310,18 +282,6 @@ find in the folder GDVIS_tutorial_output on the github.
 ``` r
 output.3D <- GDVIS_calc(input.list.3D)
 ```
-
-    ## 
-
-    ## ── Running GDVIS calc on Childhood Trauma with Anxiety ─────────────────────────
-
-    ## ℹ  Calculating 3D coordinates, this may take some time ...
-
-    ## ℹ  Data saved as GDVIS_tutorial_output/Childhood Trauma_Anxiety.3D.triangle_parameters.RData
-
-    ## ℹ  For more info see GDVIS_tutorial_output/Childhood Trauma_Anxiety.3D.log.txt
-
-    ## ✔ GDVIS calc succesfully finished!
 
 **Plot the subtype with external trait**  
 Pass the output object to the plot function to see the plot. The plot is
@@ -483,29 +443,6 @@ them) and then create the 3D visualization.
 output.2D.2D <- GDVIS_calc(input.list.2D.2D)
 ```
 
-    ## 
-
-    ## ── Running GDVIS calc in 2D.2D mode on Childhood Trauma and Comorbid anxiety ───
-
-    ## Starting 2D calculations for Childhood Trauma
-    ## ℹ  Data saved as GDVIS_tutorial_output/Childhood Trauma.2D.triangle_parameters.RData
-    ## 
-    ## ℹ  For more info see GDVIS_tutorial_output/Childhood Trauma.2D.log.txt
-    ## 
-    ## ✔ GDVIS calc succesfully finished 2D calculations
-    ## 
-    ## Starting 2D calculations for Comorbid anxiety
-    ## ℹ  Data saved as GDVIS_tutorial_output/Comorbid anxiety.2D.triangle_parameters.RData
-    ## 
-    ## ℹ  For more info see GDVIS_tutorial_output/Comorbid anxiety.2D.log.txt
-    ## 
-    ## ✔ GDVIS calc succesfully finished 2D calculations
-    ## 
-    ## Starting 2D.2D calculations
-    ## ℹ  For more info see GDVIS_tutorial_output/Childhood Trauma.with.Comorbid anxiety.2D.2D.log.txt
-    ## 
-    ## ✔ GDVIS calc succesfully finished!
-
 **Plot the subtypes**  
 Pass the output object to the plot function to see the plot. The plot is
 created as .html, the legend as .png and the shiny app shows them
@@ -562,16 +499,6 @@ find in the folder GDVIS_tutorial_output on the github.
 ``` r
 output.CD <- GDVIS_calc(input.list.CD)
 ```
-
-    ## 
-
-    ## ── Running GDVIS calc in CD mode on SCZ_cases, BIP_cases and MDD_cases ─────────
-
-    ## ℹ  Data saved as GDVIS_tutorial_output/SCZ_cases.with.SCZ_cases.with.MDD_cases.CD.triangle_parameters.RData
-
-    ## ℹ  For more info see GDVIS_tutorial_output/SCZ_cases_BIP_cases_MDD_cases.CD.log.txt
-
-    ## ✔ GDVIS calc succesfully finished CD calculations!
 
 Pass the output object to the plot function to see the plot. The plot is
 created as .html, the legend as .png and the shiny app shows them

@@ -116,7 +116,7 @@ GDVIS_plot_2D <- function(input_triangle_parameters, x_lower = NULL, x_upper = N
     plot <- ggplot2::ggplot() +
 
       # Plot lines
-      ggplot2::geom_line(aes(x = x, y = y, group = line_category, color = line_category, linewidth = line_category, linetype = line_category), data = subset(data, type == "line")) +
+      ggplot2::geom_line(ggplot2::aes(x = x, y = y, group = line_category, color = line_category, linewidth = line_category, linetype = line_category), data = subset(data, type == "line")) +
       ggplot2::scale_color_manual(values = c("sub2" = "#00B050", "sub1" = "#ED7D31", "sub1-sub2" = "#7030A0", "allcases" = "lightgray"),name = "Heritability",
                          # bquote(italic(h)^2 ~ obs[50/50])
                          labels = c("sub2" = h2_sub2.con, "sub1" = h2_sub1.con,"sub1-sub2" = h2_sub1.sub2, "allcases" = h2_allcases.con)) +
@@ -125,18 +125,18 @@ GDVIS_plot_2D <- function(input_triangle_parameters, x_lower = NULL, x_upper = N
       ggplot2::scale_linetype_manual(values = c("sub2" = sub2_line, "sub1" = sub1_line, "sub1-sub2" = subsub_line, "allcases" = "solid"), guide = "none") +
 
       # Plot the subgroup points
-      ggplot2::geom_point(aes(x = x, y = y, fill = label_color), size = 2.5, shape = 21, color = "black", data = data_angle) +
+      ggplot2::geom_point(ggplot2::aes(x = x, y = y, fill = label_color), size = 2.5, shape = 21, color = "black", data = data_angle) +
       ggplot2::scale_fill_manual(name = expression(italic(r)[g]~"(degrees)"),
                         values = c("name_con" = "black", "name_sub1" = "white",  name_sub2 = "darkgray"),
                         labels = c("name_con" = paste0(rg_sub1.con_sub2.con, " (", a.deg_sub1.con_sub2.con, "°)"),
                                    "name_sub1" = paste0(rg_sub1.con_sub1.sub2, " (", a.deg_sub1.con_sub1.sub2, "°)"),
                                    "name_sub2" = paste0(rg_sub2.con_sub1.sub2," (", a.deg_sub2.con_sub1.sub2, "°)"))) +
       ggplot2::geom_text(data = data_angle,
-                aes(x = x, y = y, label = label, vjust = vjust, hjust = hjust),
+                ggplot2::aes(x = x, y = y, label = label, vjust = vjust, hjust = hjust),
                 nudge_x = data_angle$nudge_x, nudge_y = data_angle$nudge_y) +
 
       # Plot the other points
-      ggplot2::geom_point(aes(x = x, y = y, shape = label_type, size = label_type), data = data_annot) +
+      ggplot2::geom_point(ggplot2::aes(x = x, y = y, shape = label_type, size = label_type), data = data_annot) +
       ggplot2::scale_shape_manual(name = "", values = c("allcases" = 15, "population mean" = 8),
                          labels = c("allcases" = name_allcases, "population mean" = "population mean")) +
       ggplot2::scale_size_manual(values = c("allcases" = 1.5, "population mean" = 1), guide = "none") +
@@ -169,10 +169,10 @@ GDVIS_plot_2D <- function(input_triangle_parameters, x_lower = NULL, x_upper = N
       # Plot the arrows
       if(rg_sub1.con_sub2.con < 1) {
         plot <- plot +
-          ggplot2::geom_segment(aes(x = arrow.subsub_line.start[1], y = arrow.subsub_line.start[2], xend = arrow.subsub_line.end[1], yend = arrow.subsub_line.end[2]), color = "#7030A0", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
-          ggplot2::geom_segment(aes(x = arrow.allcases_line.start[1], y = arrow.allcases_line.start[2], xend = arrow.allcases_line.end[1], yend = arrow.allcases_line.end[2]), color = "lightgray", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
-          ggplot2::geom_segment(aes(x = arrow.sub1_line.start[1], y = arrow.sub1_line.start[2], xend = arrow.sub1_line.end[1], yend = arrow.sub1_line.end[2]), color = "#ED7D31", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
-          ggplot2::geom_segment(aes(x = arrow.sub2_line.start[1], y = arrow.sub2_line.start[2], xend = arrow.sub2_line.end[1], yend = arrow.sub2_line.end[2]), color = "#00B050", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed"))
+          ggplot2::geom_segment(ggplot2::aes(x = arrow.subsub_line.start[1], y = arrow.subsub_line.start[2], xend = arrow.subsub_line.end[1], yend = arrow.subsub_line.end[2]), color = "#7030A0", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
+          ggplot2::geom_segment(ggplot2::aes(x = arrow.allcases_line.start[1], y = arrow.allcases_line.start[2], xend = arrow.allcases_line.end[1], yend = arrow.allcases_line.end[2]), color = "lightgray", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
+          ggplot2::geom_segment(ggplot2::aes(x = arrow.sub1_line.start[1], y = arrow.sub1_line.start[2], xend = arrow.sub1_line.end[1], yend = arrow.sub1_line.end[2]), color = "#ED7D31", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
+          ggplot2::geom_segment(ggplot2::aes(x = arrow.sub2_line.start[1], y = arrow.sub2_line.start[2], xend = arrow.sub2_line.end[1], yend = arrow.sub2_line.end[2]), color = "#00B050", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed"))
         }
 
       # Conditionally set x and y axis limits

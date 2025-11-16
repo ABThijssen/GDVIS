@@ -45,7 +45,7 @@ GDVIS_plot_3D <- function(input_triangle_parameters, show.rendering = TRUE, show
         n_segments <- length(colors) - 1
         for (i in seq(1, n_segments)) {
           fig <- fig %>%
-            add_trace(
+            plotly::add_trace(
               x = x[c(i, i + 1)], y = y[c(i, i + 1)], z = z[c(i, i + 1)],
               type = 'scatter3d', mode = 'lines',
               line = list(color = colors[i], width = width),
@@ -484,8 +484,8 @@ GDVIS_plot_3D <- function(input_triangle_parameters, show.rendering = TRUE, show
 
       # Define UI for the shiny app
       ui <- shiny::fluidPage(shiny::fluidRow(
-          column(8, plotly::plotlyOutput("plotly_plot", height = "600px")),   # 8/12 width for the plotly plot
-          column(4, shiny::plotOutput("ggplot_legend", height = "600px"))))    # 4/12 width for the ggplot legend
+          shiny::column(8, plotly::plotlyOutput("plotly_plot", height = "600px")),   # 8/12 width for the plotly plot
+          shiny::column(4, shiny::plotOutput("ggplot_legend", height = "600px"))))    # 4/12 width for the ggplot legend
 
       # Define server logic for the shiny app
       server <- function(input, output, session) {

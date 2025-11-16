@@ -564,20 +564,20 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
           return(fit_sub1+fit_sub2+fit_con)}
 
         # Find the differences for each combination of x,y,z and add it to the matrix
-        xyz_fit <- as_tibble(xyz_matrix) %>%
-          rowwise() %>%
-          mutate(fit = test_row_fit(x, y, z))
+        xyz_fit <- tibble::as_tibble(xyz_matrix) %>%
+          dplyr::rowwise() %>%
+          dplyr::mutate(fit = test_row_fit(x, y, z))
 
         # Get the lowest fit
         min_fit <- min(xyz_fit$fit)
         best_fit <- xyz_fit %>%
-          filter(fit == min_fit)
+          dplyr::filter(fit == min_fit)
 
         return(best_fit)      }
 
       # Function to generate matrix and find best fit
       generate_best_fit <- function(xs, ys, zs) {
-        xyz_matrix <- as.matrix(crossing(x = xs, y = ys, z = zs))
+        xyz_matrix <- as.matrix(tidyr::crossing(x = xs, y = ys, z = zs))
         best_fit <- test_matrix_fit(xyz_matrix) #%>% unlist()
         return(best_fit)}
 
@@ -619,8 +619,8 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
 
         # Filter on lowest fit
         coords_finest <- coords_finest %>%
-          ungroup() %>%  # Remove rowwise structure
-          filter(fit == min_fit)
+          dplyr::ungroup() %>%  # Remove rowwise structure
+          dplyr::filter(fit == min_fit)
 
         # Lowest fit will sometimes still include two options, then just get the first one
         coords_finest <- coords_finest[1,]
@@ -1979,12 +1979,12 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
         # Find the differences for each combination of x,y,z and add it to the matrix
         xyz_fit <- as_tibble(xyz_matrix) %>%
           rowwise() %>%
-          mutate(fit = test_row_fit(x, y, z))
+          dplyr::mutate(fit = test_row_fit(x, y, z))
 
         # Get the lowest fit
         min_fit <- min(xyz_fit$fit)
         best_fit <- xyz_fit %>%
-          filter(fit == min_fit)
+          dplyr::filter(fit == min_fit)
 
         return(best_fit)      }
 
@@ -2026,8 +2026,8 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
 
       # Filter on lowest fit
       coords_finest <- coords_finest %>%
-        ungroup() %>%  # Remove rowwise structure
-        filter(fit == min_fit)
+        dplyr::ungroup() %>%  # Remove rowwise structure
+        dplyr::filter(fit == min_fit)
 
       # Lowest fit will sometimes still include two options, then just get the first one
       coords_finest <- coords_finest[1,]

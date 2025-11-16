@@ -11,7 +11,6 @@ author: "Anaïs Thijssen (a.b.thijssen@gmail.com)"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-#knitr::opts_chunk$set(error = TRUE)
 knitr::opts_knit$set(stop_on_error = 0)   # never halt
 library(tidyverse)
 ```
@@ -27,16 +26,13 @@ Check out the GDVIS website here: <https://gdvis.shinyapps.io/gdvis/>.
  
 # Download and install GDVIS
 
-[to be added, for now source locally]
+```{r, echo = TRUE, eval = F, results="hide", message=FALSE, warning=FALSE}
 
-```{r, echo = TRUE, results="hide", message=FALSE, warning=FALSE}
+library(devtools)
+devtools::install_github("https://github.com/ABThijsen/GDVIS")
 
+library(GDVIS)
 
-source("R/GDVIS_calc.R")
-source("R/GDVIS_plot_2D.R")
-source("R/GDVIS_plot_2D_2D.R")
-source("R/GDVIS_plot_3D.R")
-source("R/GDVIS_plot_CD.R")
 
 ```
 
@@ -102,7 +98,7 @@ input.list <- list(
   rg_sub1.con_sub2.con                          = 0.6011,
   rg_se_sub1.con_sub2.con                       = 0.0610,
   plot_title                                    = "Childhood Trauma",
-  folder_location                               = "GDVIS_tutorial_output",
+  folder_location                               = "",
   filename                                      = "Childhood Trauma.minimum",
   pop.prev_case                                 = 0.16,
   
@@ -125,7 +121,7 @@ input.list <- list(
 
 **Pass input list to GDVIS_calc**   
 A logfile will also automatically be generated and saved, which you can find in the folder GDVIS_tutorial_output on the github.
-```{r}
+```{r, echo = T, eval = F}
 output <- GDVIS_calc(input.list)
 ```
 
@@ -136,9 +132,13 @@ Note that the h2 and rg values in the legend are the GDVIS estimated values and 
 Note that you can manually set the axes limits (this is especially nice if you have multiple triangles and want to make sure the axes are similar, it can also help with making the legend appear outside of the triangle).  
 
 **Plot the subtype**
-```{r}
+```{r, echo = T, eval = F}
 # GDVIS_plot_2D(output) This will run as well, but we will add some axes restaints 
 GDVIS_plot_2D(output, x_lower = -0.35, x_upper = 0.35, y_lower = -0.15, y_upper = 0.35)
+```
+
+```{r, echo=FALSE, out.width="70%", fig.align="center"}
+knitr::include_graphics("screenshot_2D.png")
 ```
 
 ---------------------------------------------------------------------------------------------------
@@ -187,7 +187,7 @@ input.list.3D <- list(
   rg_sub1.con_sub2.con                          = 0.6011,
   rg_se_sub1.con_sub2.con                       = 0.0610,
   plot_title                                    = "Childhood Trauma",
-  folder_location                               = "GDVIS_tutorial_output",
+  folder_location                               = "output",
   filename                                      = "Childhood Trauma",
   pop.prev_case                                 = 0.16, 
   
@@ -226,7 +226,7 @@ input.list.3D <- list(
 
 **Pass input list to GDVIS_calc**   
 A logfile will also automatically be generated and saved, which you can find in the folder GDVIS_tutorial_output on the github.
-```{r}
+```{r, echo = T, eval = F}
 output.3D <- GDVIS_calc(input.list.3D)
 ```
 
@@ -360,7 +360,7 @@ input.list.2D.2D <- list(
 **Pass input list to GDVIS_calc**   
 A logfile will also automatically be generated and saved, which you can find in the folder GDVIS_tutorial_output on the github.     
 This function will first create the separate subtype plots (and save them) and then create the 3D visualization.   
-```{r}
+```{r, echo = T, eval = F}
 output.2D.2D <- GDVIS_calc(input.list.2D.2D)
 ```
 
@@ -412,7 +412,7 @@ input.list.CD <- list(
 
 **Pass input list to GDVIS_calc**   
 A logfile will also automatically be generated and saved, which you can find in the folder GDVIS_tutorial_output on the github.
-```{r}
+```{r, eval = F}
 output.CD <- GDVIS_calc(input.list.CD)
 ```
 
