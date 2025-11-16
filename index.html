@@ -54,7 +54,7 @@
 <h1 id="welcome-to-this-gdvis-tutorial">Welcome to this GDVIS tutorial<a class="anchor" aria-label="anchor" href="#welcome-to-this-gdvis-tutorial"></a>
 </h1>
 <p><strong>GDVIS (Genetic Distance Visualization)</strong> is an R package that allows you to compute and visualize genetic distances between subtypes of a disorder (2D mode), between a subtype and an external trait (3D mode), between two different subtype definitions (2D_2D mode) and between three different traits (CD mode). Note that all heritabilities need to be on the 50:50 case-control scale. This can be achieved by using the Neffective in LDSC (for more details, see the paper).</p>
-<p>Check out the paper here: [to be added]<br>
+<p>Check out the preprint here: [to be added]<br>
 Check out the GDVIS website here: <a href="https://gdvis.shinyapps.io/gdvis/" class="external-link uri">https://gdvis.shinyapps.io/gdvis/</a>.</p>
 <hr>
 </div>
@@ -110,9 +110,6 @@ Check out the GDVIS website here: <a href="https://gdvis.shinyapps.io/gdvis/" cl
 <li>
 <em>rg_se_sub1.con_sub2.con</em>: the standard error of the genetic correlation</li>
 <li>
-<em>folder_location</em>: the folder that you want the data to be stored at<br>
-</li>
-<li>
 <em>filename</em>: the name of the file for saving<br>
 </li>
 <li>
@@ -155,6 +152,8 @@ Check out the GDVIS website here: <a href="https://gdvis.shinyapps.io/gdvis/" cl
 </li>
 <li>
 <em>optional_LDSC_h2_se_allcases.con</em>: the standard error of the heritability</li>
+<li>
+<em>folder_location</em>: if you want to save the output in a different folder than the current working directory</li>
 </ul>
 <p>GDVIS will not run when there is no suggested evidence of significant difference between subgroups.<br>
 Specifically, when rg is not significantly different from 1 (filter 1a) AND h2.sub1 is not clearly different from h2.sub2 (filter 1b and 1c), the triangle will not be plotted.<br>
@@ -175,8 +174,7 @@ In some occasions, a triangle will not be plotted while it would have been plott
 <span>  rg_sub1.con_sub2.con                          <span class="op">=</span> <span class="fl">0.6011</span>,</span>
 <span>  rg_se_sub1.con_sub2.con                       <span class="op">=</span> <span class="fl">0.0610</span>,</span>
 <span>  plot_title                                    <span class="op">=</span> <span class="st">"Childhood Trauma"</span>,</span>
-<span>  folder_location                               <span class="op">=</span> <span class="st">"GDVIS_tutorial_output"</span>,</span>
-<span>  filename                                      <span class="op">=</span> <span class="st">"Childhood Trauma.minimum"</span>,</span>
+<span>  filename                                      <span class="op">=</span> <span class="st">"Childhood Trauma"</span>,</span>
 <span>  pop.prev_case                                 <span class="op">=</span> <span class="fl">0.16</span>,</span>
 <span>  </span>
 <span>  <span class="co"># All variables below can optionally be added to the input.list</span></span>
@@ -267,7 +265,6 @@ GDVIS will not run when the input would result in an invalid geometrical represe
 <span>  rg_sub1.con_sub2.con                          <span class="op">=</span> <span class="fl">0.6011</span>,</span>
 <span>  rg_se_sub1.con_sub2.con                       <span class="op">=</span> <span class="fl">0.0610</span>,</span>
 <span>  plot_title                                    <span class="op">=</span> <span class="st">"Childhood Trauma"</span>,</span>
-<span>  folder_location                               <span class="op">=</span> <span class="st">"GDVIS_tutorial_output"</span>,</span>
 <span>  filename                                      <span class="op">=</span> <span class="st">"Childhood Trauma"</span>,</span>
 <span>  pop.prev_case                                 <span class="op">=</span> <span class="fl">0.16</span>, </span>
 <span>  </span>
@@ -376,7 +373,6 @@ GDVIS will not run when the input would result in an invalid geometrical represe
 <span></span>
 <span>  <span class="co"># General info triangle 1</span></span>
 <span>  triangle1.plot_title                                  <span class="op">=</span> <span class="st">"Childhood Trauma"</span>,</span>
-<span>  triangle1.folder_location                             <span class="op">=</span> <span class="st">"GDVIS_tutorial_output"</span>,</span>
 <span>  triangle1.filename                                    <span class="op">=</span> <span class="st">"Childhood Trauma"</span>,</span>
 <span>  triangle1.pop.prev_case                               <span class="op">=</span> <span class="fl">0.16</span>,</span>
 <span>  </span>
@@ -410,7 +406,6 @@ GDVIS will not run when the input would result in an invalid geometrical represe
 <span></span>
 <span>  <span class="co"># General info triangle 2</span></span>
 <span>  triangle2.plot_title                                  <span class="op">=</span> <span class="st">"Comorbid anxiety"</span>, </span>
-<span>  triangle2.folder_location                             <span class="op">=</span> <span class="st">"GDVIS_tutorial_output"</span>,</span>
 <span>  triangle2.filename                                    <span class="op">=</span> <span class="st">"Comorbid anxiety"</span>,</span>
 <span>  triangle2.pop.prev_case                               <span class="op">=</span> <span class="fl">0.16</span>,</span>
 <span></span>
@@ -454,8 +449,8 @@ This RMarkdown file cannot handle interactive shiny output, for an example of th
 The plot below is a screenshot of the 3D interactive visualization.<br>
 It is possible to just make and save the plots without rendering them and to make the plots without showing the labels.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#GDVIS_plot_3D(output.3D, show.rendering = FALSE, show.names = FALSE)</span></span>
-<span><span class="fu"><a href="reference/GDVIS_plot_3D.html">GDVIS_plot_3D</a></span><span class="op">(</span><span class="va">output.3D</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#GDVIS_plot_2D.2D(output.2D.2D, show.rendering = FALSE, show.names = FALSE)</span></span>
+<span><span class="fu"><a href="reference/GDVIS_plot_2D_2D.html">GDVIS_plot_2D_2D</a></span><span class="op">(</span><span class="va">output.2D.2D</span><span class="op">)</span></span></code></pre></div>
 <p><img src="screenshot_2D_2D.png" width="70%" style="display: block; margin: auto;"></p>
 <hr>
 </div>
@@ -481,8 +476,7 @@ Note that no standard errors are asked, you need to check yourself whether your 
 <span>  h2_trait3                                     <span class="op">=</span> <span class="fl">0.0703</span>,</span>
 <span>  pop.prev_trait1                               <span class="op">=</span> <span class="fl">0.004</span>,</span>
 <span>  pop.prev_trait2                               <span class="op">=</span> <span class="fl">0.01</span>,</span>
-<span>  pop.prev_trait3                               <span class="op">=</span> <span class="fl">0.16</span>,</span>
-<span>  folder_location                               <span class="op">=</span> <span class="st">"GDVIS_tutorial_output"</span><span class="op">)</span></span></code></pre></div>
+<span>  pop.prev_trait3                               <span class="op">=</span> <span class="fl">0.16</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Pass input list to GDVIS_calc</strong><br>
 A logfile will also automatically be generated and saved, which you can find in the folder GDVIS_tutorial_output on the github.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
