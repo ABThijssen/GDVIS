@@ -15,7 +15,7 @@ different traits (CD mode). Note that all heritabilities need to be on
 the 50:50 case-control scale. This can be achieved by using the
 Neffective in LDSC (for more details, see the paper).
 
-Check out the paper here: \[to be added\]  
+Check out the preprint here: \[to be added\]  
 Check out the GDVIS website here: <https://gdvis.shinyapps.io/gdvis/>.
 
 ------------------------------------------------------------------------
@@ -65,7 +65,6 @@ format:
   controls  
 - *rg_se_sub1.con_sub2.con*: the standard error of the genetic
   correlation
-- *folder_location*: the folder that you want the data to be stored at  
 - *filename*: the name of the file for saving  
 - *pop.prev_case*: the population prevalence of the cases (here the
   population prevalence of MDD)
@@ -106,6 +105,8 @@ you can create the input list without these variables.
   controls  
 - *optional_LDSC_h2_se_allcases.con*: the standard error of the
   heritability
+- *folder_location*: if you want to save the output in a different
+  folder than the current working directory
 
 GDVIS will not run when there is no suggested evidence of significant
 difference between subgroups.  
@@ -134,8 +135,7 @@ input.list <- list(
   rg_sub1.con_sub2.con                          = 0.6011,
   rg_se_sub1.con_sub2.con                       = 0.0610,
   plot_title                                    = "Childhood Trauma",
-  folder_location                               = "GDVIS_tutorial_output",
-  filename                                      = "Childhood Trauma.minimum",
+  filename                                      = "Childhood Trauma",
   pop.prev_case                                 = 0.16,
   
   # All variables below can optionally be added to the input.list
@@ -239,7 +239,6 @@ input.list.3D <- list(
   rg_sub1.con_sub2.con                          = 0.6011,
   rg_se_sub1.con_sub2.con                       = 0.0610,
   plot_title                                    = "Childhood Trauma",
-  folder_location                               = "GDVIS_tutorial_output",
   filename                                      = "Childhood Trauma",
   pop.prev_case                                 = 0.16, 
   
@@ -365,7 +364,6 @@ input.list.2D.2D <- list(
 
   # General info triangle 1
   triangle1.plot_title                                  = "Childhood Trauma",
-  triangle1.folder_location                             = "GDVIS_tutorial_output",
   triangle1.filename                                    = "Childhood Trauma",
   triangle1.pop.prev_case                               = 0.16,
   
@@ -399,7 +397,6 @@ input.list.2D.2D <- list(
 
   # General info triangle 2
   triangle2.plot_title                                  = "Comorbid anxiety", 
-  triangle2.folder_location                             = "GDVIS_tutorial_output",
   triangle2.filename                                    = "Comorbid anxiety",
   triangle2.pop.prev_case                               = 0.16,
 
@@ -457,8 +454,8 @@ It is possible to just make and save the plots without rendering them
 and to make the plots without showing the labels.
 
 ``` r
-#GDVIS_plot_3D(output.3D, show.rendering = FALSE, show.names = FALSE)
-GDVIS_plot_3D(output.3D)
+#GDVIS_plot_2D.2D(output.2D.2D, show.rendering = FALSE, show.names = FALSE)
+GDVIS_plot_2D_2D(output.2D.2D)
 ```
 
 <img src="screenshot_2D_2D.png" width="70%" style="display: block; margin: auto;" />
@@ -488,8 +485,7 @@ input.list.CD <- list(
   h2_trait3                                     = 0.0703,
   pop.prev_trait1                               = 0.004,
   pop.prev_trait2                               = 0.01,
-  pop.prev_trait3                               = 0.16,
-  folder_location                               = "GDVIS_tutorial_output")
+  pop.prev_trait3                               = 0.16)
 ```
 
 **Pass input list to GDVIS_calc**  
