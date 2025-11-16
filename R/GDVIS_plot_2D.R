@@ -57,14 +57,14 @@ GDVIS_plot_2D <- function(input_triangle_parameters, x_lower = NULL, x_upper = N
       nudge_x = c(rep(NA, 8), 0, 0.01, 0.005, 0.015),
       nudge_y = c(rep(NA, 8), 0, 0.01, 0.015, -0),
       stringsAsFactors = FALSE) %>%
-      mutate(line_category = factor(line_category, levels = c("sub1", "sub2", "sub1-sub2", "allcases")), linetype = factor(linetype, levels = c("solid", "dashed")))
+      dplyr::mutate(line_category = factor(line_category, levels = c("sub1", "sub2", "sub1-sub2", "allcases")), linetype = factor(linetype, levels = c("solid", "dashed")))
     data_angle <- data %>%
-      filter(!is.na(label_color))
+      dplyr::filter(!is.na(label_color))
     data_annot <- data %>%
-      filter(is.na(type)) %>%
-      select(x, y, label) %>%
-      mutate(label_type = "allcases") %>%
-      add_row(x = x.popmean, y = y.popmean, label = "population mean", label_type = "population mean")
+      dplyr::filter(is.na(type)) %>%
+      dplyr::select(x, y, label) %>%
+      dplyr::mutate(label_type = "allcases") %>%
+      tibble::add_row(x = x.popmean, y = y.popmean, label = "population mean", label_type = "population mean")
 
     # Adjust for rg = 1
     sub1_line_width <- if(rg_sub1.con_sub2.con == 1) {2.5} else {1}
