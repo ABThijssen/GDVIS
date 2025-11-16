@@ -143,12 +143,12 @@ GDVIS_plot_2D <- function(input_triangle_parameters, x_lower = NULL, x_upper = N
 
       # Clean background
       ggplot2::theme_minimal() +
-      ggplot2::theme(axis.title.x = element_blank(), axis.title.y = element_blank(),   # Remove axes titles
-            axis.text.x = element_blank(),  axis.text.y = element_blank(),    # Remove axes text
-            axis.ticks = element_blank(),                                     # Remove axes ticks
-            panel.grid.major = element_blank(),                               # Remove major gridlines
-            panel.grid.minor = element_blank(),                               # Remove minor gridlines
-            panel.background = element_rect(fill = "white", colour = NA)) +   # Set background color to white
+      ggplot2::theme(axis.title.x = ggplot2::element_blank(), axis.title.y = ggplot2::element_blank(),   # Remove axes titles
+            axis.text.x = ggplot2::element_blank(),  axis.text.y = ggplot2::element_blank(),    # Remove axes text
+            axis.ticks = ggplot2::element_blank(),                                     # Remove axes ticks
+            panel.grid.major = ggplot2::element_blank(),                               # Remove major gridlines
+            panel.grid.minor = ggplot2::element_blank(),                               # Remove minor gridlines
+            panel.background = ggplot2::element_rect(fill = "white", colour = NA)) +   # Set background color to white
 
 
       # Set title (set title like this so it is always centered)
@@ -158,10 +158,10 @@ GDVIS_plot_2D <- function(input_triangle_parameters, x_lower = NULL, x_upper = N
       ggplot2::theme(
             #legend.position.inside = c(0.15, 0.5),                                    # Position the legend at the bottom left
             legend.position = c(0.15, 0.5),
-            legend.title = element_text(size = 10),                           # Adjusts the size of the legend title
-            legend.text = element_text(size = 8),                             # Adjusts the size of the legend text (labels)
-            legend.key.size = unit(0.5, "cm")) +                              # Adjusts the size of the keys in the legend
-      ggplot2::guides(color = guide_legend(order = 1), fill = guide_legend(order = 2), shape = guide_legend(order = 3)) +
+            legend.title = ggplot2::element_text(size = 10),                           # Adjusts the size of the legend title
+            legend.text = ggplot2::element_text(size = 8),                             # Adjusts the size of the legend text (labels)
+            legend.key.size = ggplot2::unit(0.5, "cm")) +                              # Adjusts the size of the keys in the legend
+      ggplot2::guides(color = ggplot2::guide_legend(order = 1), fill = ggplot2::guide_legend(order = 2), shape = ggplot2::guide_legend(order = 3)) +
 
       # Scale axes
       ggplot2::coord_fixed(ratio = 1)
