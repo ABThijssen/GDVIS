@@ -92,31 +92,31 @@ add_arrowhead <- function(fig, dirvect, midpoint,color) {
 
   # Adding the arrowhead lines to the plot
   fig <- fig %>%
-    add_trace(x = c(midpoint[1], arrow_start_right[1]),
+    plotly::add_trace(x = c(midpoint[1], arrow_start_right[1]),
               y = c(midpoint[2], arrow_start_right[2]),
               z = c(midpoint[3], arrow_start_right[3]),
               type = 'scatter3d', mode = 'lines', line = list(color = color, width = 3), showlegend = FALSE, hoverinfo = 'none') %>%
-    add_trace(x = c(midpoint[1], arrow_start_left[1]),
+    plotly::add_trace(x = c(midpoint[1], arrow_start_left[1]),
               y = c(midpoint[2], arrow_start_left[2]),
               z = c(midpoint[3], arrow_start_left[3]),
               type = 'scatter3d', mode = 'lines', line = list(color = color, width = 3), showlegend = FALSE, hoverinfo = 'none') %>%
-    add_trace(x = c(midpoint[1], arrow_start_up[1]),
+    plotly::add_trace(x = c(midpoint[1], arrow_start_up[1]),
               y = c(midpoint[2], arrow_start_up[2]),
               z = c(midpoint[3], arrow_start_up[3]),
               type = 'scatter3d', mode = 'lines', line = list(color = color, width = 3), showlegend = FALSE, hoverinfo = 'none') %>%
-    add_trace(x = c(midpoint[1], arrow_start_down[1]),
+    plotly::add_trace(x = c(midpoint[1], arrow_start_down[1]),
               y = c(midpoint[2], arrow_start_down[2]),
               z = c(midpoint[3], arrow_start_down[3]),
               type = 'scatter3d', mode = 'lines', line = list(color = color, width = 3), showlegend = FALSE, hoverinfo = 'none') %>%
-    add_trace(x = c(arrow_start_left[1], arrow_start_right[1]),
+    plotly::add_trace(x = c(arrow_start_left[1], arrow_start_right[1]),
               y = c(arrow_start_left[2], arrow_start_right[2]),
               z = c(arrow_start_left[3], arrow_start_right[3]),
               type = 'scatter3d', mode = 'lines', line = list(color = color, width = 3), showlegend = FALSE, hoverinfo = 'none') %>%
-    add_trace(x = c(arrow_start_up[1], arrow_start_down[1]),
+    plotly::add_trace(x = c(arrow_start_up[1], arrow_start_down[1]),
               y = c(arrow_start_up[2], arrow_start_down[2]),
               z = c(arrow_start_up[3], arrow_start_down[3]),
               type = 'scatter3d', mode = 'lines', line = list(color = color, width = 3), showlegend = FALSE, hoverinfo = 'none') %>%
-    add_trace(x = c(arrow_start_right[1], arrow_start_left[1], midpoint[1]),
+    plotly::add_trace(x = c(arrow_start_right[1], arrow_start_left[1], midpoint[1]),
               y = c(arrow_start_right[2], arrow_start_left[2], midpoint[2]),
               z = c(arrow_start_right[3], arrow_start_left[3], midpoint[3]),
               type = 'mesh3d',
@@ -125,7 +125,7 @@ add_arrowhead <- function(fig, dirvect, midpoint,color) {
               opacity = 1,
               showlegend = FALSE, showscale = FALSE,
               hoverinfo = 'none') %>%
-    add_trace(x = c(arrow_start_up[1], arrow_start_down[1], midpoint[1]),
+    plotly::add_trace(x = c(arrow_start_up[1], arrow_start_down[1], midpoint[1]),
               y = c(arrow_start_up[2], arrow_start_down[2], midpoint[2]),
               z = c(arrow_start_up[3], arrow_start_down[3], midpoint[3]),
               type = 'mesh3d',
@@ -146,77 +146,77 @@ add_arrowhead <- function(fig, dirvect, midpoint,color) {
 fig <- plot_ly() %>%
 
   # trait1 line
-  add_trace(x = c(x.trait1.con, x.trait1), y = c(y.trait1.con, y.trait1), z = c(z.trait1.con, z.trait1),
+  plotly::add_trace(x = c(x.trait1.con, x.trait1), y = c(y.trait1.con, y.trait1), z = c(z.trait1.con, z.trait1),
             type = 'scatter3d', mode = 'lines',
             line = list(color = "#083F80", width = 6),
             showlegend = FALSE,
             hoverinfo = 'none') %>%
 
   # trait2 line
-  add_trace(x = c(x.trait2.con, x.trait2), y = c(y.trait2.con, y.trait2), z = c(z.trait2.con, z.trait2),
+  plotly::add_trace(x = c(x.trait2.con, x.trait2), y = c(y.trait2.con, y.trait2), z = c(z.trait2.con, z.trait2),
             type = 'scatter3d', mode = 'lines',
             line = list(color = "#3696D2", width = 6),
             showlegend = FALSE,
             hoverinfo = 'none') %>%
 
   # trait3 line
-  add_trace(x = c(x.trait3.con, x.trait3), y = c(y.trait3.con, y.trait3), z = c(z.trait3.con, z.trait3),
+  plotly::add_trace(x = c(x.trait3.con, x.trait3), y = c(y.trait3.con, y.trait3), z = c(z.trait3.con, z.trait3),
             type = 'scatter3d', mode = 'lines',
             line = list(color = "#B4D8F0", width = 6),
             showlegend = FALSE,
             hoverinfo = 'none') %>%
 
   # trait1-trait2 line
-  add_trace(x = c(x.trait1, x.trait2), y = c(y.trait1, y.trait2), z = c(z.trait1, z.trait2),
+  plotly::add_trace(x = c(x.trait1, x.trait2), y = c(y.trait1, y.trait2), z = c(z.trait1, z.trait2),
             type = 'scatter3d', mode = 'lines',
             line = list(color = "#ED7D31", width = 6),
             showlegend = FALSE,
             hoverinfo = 'none') %>%
 
   # trait1-trait3 line
-  add_trace(x = c(x.trait1, x.trait3), y = c(y.trait1, y.trait3), z = c(z.trait1, z.trait3),
+  plotly::add_trace(x = c(x.trait1, x.trait3), y = c(y.trait1, y.trait3), z = c(z.trait1, z.trait3),
             type = 'scatter3d', mode = 'lines',
             line = list(color = "#00B050", width = 6),
             showlegend = FALSE,
             hoverinfo = 'none') %>%
 
   # trait2-trait3 line
-  add_trace(x = c(x.trait2, x.trait3), y = c(y.trait2, y.trait3), z = c(z.trait2, z.trait3),
+  plotly::add_trace(x = c(x.trait2, x.trait3), y = c(y.trait2, y.trait3), z = c(z.trait2, z.trait3),
             type = 'scatter3d', mode = 'lines',
             line = list(color = "#7030A0", width = 6),
             showlegend = FALSE,
             hoverinfo = 'none') %>%
 
   # # trait1.con line to trait2.con
-  # add_trace(x = c(x.trait1.con, x.trait2.con), y = c(y.trait1.con, y.trait2.con), z = c(z.trait1.con, z.trait2.con),
+  # plotly::add_trace(x = c(x.trait1.con, x.trait2.con), y = c(y.trait1.con, y.trait2.con), z = c(z.trait1.con, z.trait2.con),
   #           type = 'scatter3d', mode = 'lines',
   #           line = list(color = "black", width = 2),
   #           showlegend = FALSE,
   #           hoverinfo = 'none') %>%
   #
   # # trait1.con line to trait3.con
-  # add_trace(x = c(x.trait1.con, x.trait3.con), y = c(y.trait1.con, y.trait3.con), z = c(z.trait1.con, z.trait3.con),
+  # plotly::add_trace(x = c(x.trait1.con, x.trait3.con), y = c(y.trait1.con, y.trait3.con), z = c(z.trait1.con, z.trait3.con),
   #           type = 'scatter3d', mode = 'lines',
   #           line = list(color = "black", width = 2),
   #           showlegend = FALSE,
   #           hoverinfo = 'none') %>%
   #
   # # trait2.con line to trait3.con
-  # add_trace(x = c(x.trait2.con, x.trait3.con), y = c(y.trait2.con, y.trait3.con), z = c(z.trait2.con, z.trait3.con),
+  # plotly::add_trace(x = c(x.trait2.con, x.trait3.con), y = c(y.trait2.con, y.trait3.con), z = c(z.trait2.con, z.trait3.con),
   #           type = 'scatter3d', mode = 'lines',
   #           line = list(color = "black", width = 2),
   #           showlegend = FALSE,
   #           hoverinfo = 'none') %>%
 
   # Add popmean
-  add_trace(x = x.popmean, y = y.popmean, z = z.popmean,
+  plotly::add_trace(x = x.popmean, y = y.popmean, z = z.popmean,
             type = 'scatter3d', mode = 'markers',
             marker = list(size = 5, color = 'black', symbol = "cross"),
             showlegend = FALSE,
             hoverinfo = 'none') %>%
 
   # Add trait1.con point
-  add_trace(x = x.trait1.con,
+  plotly::add_trace(x = x.trait1.con,
             y = y.trait1.con,
             z = z.trait1.con,
             type = 'scatter3d', mode = 'markers',
@@ -225,7 +225,7 @@ fig <- plot_ly() %>%
             hoverinfo = 'none') %>%
 
   # Add trait1 point
-  add_trace(x = x.trait1,
+  plotly::add_trace(x = x.trait1,
             y = y.trait1,
             z = z.trait1,
             type = 'scatter3d', mode = 'markers',
@@ -234,7 +234,7 @@ fig <- plot_ly() %>%
             hoverinfo = 'none') %>%
 
   # Add trait2.con point
-  add_trace(x = x.trait2.con,
+  plotly::add_trace(x = x.trait2.con,
             y = y.trait2.con,
             z = z.trait2.con,
             type = 'scatter3d', mode = 'markers',
@@ -243,7 +243,7 @@ fig <- plot_ly() %>%
             hoverinfo = 'none') %>%
 
   # Add trait2 point
-  add_trace(x = x.trait2,
+  plotly::add_trace(x = x.trait2,
             y = y.trait2,
             z = z.trait2,
             type = 'scatter3d', mode = 'markers',
@@ -252,7 +252,7 @@ fig <- plot_ly() %>%
             hoverinfo = 'none') %>%
 
   # Add trait3.con point
-  add_trace(x = x.trait3.con,
+  plotly::add_trace(x = x.trait3.con,
             y = y.trait3.con,
             z = z.trait3.con,
             type = 'scatter3d', mode = 'markers',
@@ -261,7 +261,7 @@ fig <- plot_ly() %>%
             hoverinfo = 'none') %>%
 
   # Add trait3 point
-  add_trace(x = x.trait3,
+  plotly::add_trace(x = x.trait3,
             y = y.trait3,
             z = z.trait3,
             type = 'scatter3d', mode = 'markers',
@@ -278,7 +278,7 @@ fig <- plot_ly() %>%
     hovermode = 'none') %>%
 
   # Add text annotations
-  add_trace(x = c(x.trait1, x.trait2, x.trait3, x.trait1.con, x.trait2.con, x.trait3.con),
+  plotly::add_trace(x = c(x.trait1, x.trait2, x.trait3, x.trait1.con, x.trait2.con, x.trait3.con),
             y = c(y.trait1, y.trait2, y.trait3, y.trait1.con, y.trait2.con, y.trait3.con),
             z = c(z.trait1, z.trait2, z.trait3, z.trait1.con, z.trait2.con, z.trait3.con),
             type = "scatter3d", mode = "text",
@@ -289,7 +289,7 @@ fig <- plot_ly() %>%
             hoverinfo = 'none') %>%
 
   # Make the cases triangle gray
-  add_trace(x = c(x.trait1, x.trait2, x.trait3),
+  plotly::add_trace(x = c(x.trait1, x.trait2, x.trait3),
             y = c(y.trait1, y.trait2, y.trait3),
             z = c(z.trait1, z.trait2, z.trait3),
             type = 'mesh3d',
@@ -399,9 +399,9 @@ if (show.rendering == TRUE & webversion == FALSE) {  cli::cli_alert_info("Showin
 
 if (webversion == FALSE) {
 # Define UI for the shiny app
-ui <- fluidPage(fluidRow(
-  column(8, plotlyOutput("plotly_plot", height = "600px")),   # 8/12 width for the plotly plot
-  column(4, plotOutput("ggplot_legend", height = "600px"))))    # 4/12 width for the ggplot legend
+ui <- shiny::fluidPage(fluidRow(
+  shiny::column(8, plotlyOutput("plotly_plot", height = "600px")),   # 8/12 width for the plotly plot
+  shiny::column(4, plotOutput("ggplot_legend", height = "600px"))))    # 4/12 width for the ggplot legend
 
 # Define server logic for the shiny app
 server <- function(input, output, session) {

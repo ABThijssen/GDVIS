@@ -19,7 +19,7 @@ library(tidyverse)
 
 **GDVIS (Genetic Distance Visualization)** is an R package that allows you to compute and visualize genetic distances between subtypes of a disorder (2D mode), between a subtype and an external trait (3D mode), between two different subtype definitions (2D_2D mode) and between three different traits (CD mode). Note that all heritabilities need to be on the 50:50 case-control scale. This can be achieved by using the Neffective in LDSC (for more details, see the paper).
 
-Check out the paper here: [to be added]  
+Check out the preprint here: [to be added]  
 Check out the GDVIS website here: <https://gdvis.shinyapps.io/gdvis/>.
  
 ----------------------------------------------------------------------------------------------------- 
@@ -57,7 +57,6 @@ GDVIS needs the following minimal input, which needs to be in list format:
 - *name_con*: the name of the controls  
 - *rg_sub1.con_sub2.con*: the genetic correlation between the GWAS subtype1-cases versus controls and the GWAS subtype2-cases versus controls  
 - *rg_se_sub1.con_sub2.con*: the standard error of the genetic correlation 
-- *folder_location*: the folder that you want the data to be stored at  
 - *filename*: the name of the file for saving  
 - *pop.prev_case*: the population prevalence of the cases (here the population prevalence of MDD)  
 
@@ -74,7 +73,8 @@ There are optional variables that you can also add, this will allow GDVIS to che
 - *optional_LDSC_rg_sub2.con_sub1.sub2*: the genetic correlation of the GWAS subtype2-cases versus controls and the GWAS subtype1-cases versus subtype2-cases      
 - *optional_LDSC_rg_se_sub2.con_sub1.sub2*: the standard error of the genetic correlation  
 - *optional_LDSC_h2_allcases.con*: the heritability of the GWAS of a;; cases (the pool of subtype1-cases and subtype2-cases) versus controls       
-- *optional_LDSC_h2_se_allcases.con*: the standard error of the heritability            
+- *optional_LDSC_h2_se_allcases.con*: the standard error of the heritability
+- *folder_location*: if you want to save the output in a different folder than the current working directory  
 
 GDVIS will not run when there is no suggested evidence of significant difference between subgroups.  
 Specifically, when rg is not significantly different from 1 (filter 1a) AND h2.sub1 is not clearly different from h2.sub2 (filter 1b and 1c), the triangle will not be plotted.  
@@ -98,8 +98,7 @@ input.list <- list(
   rg_sub1.con_sub2.con                          = 0.6011,
   rg_se_sub1.con_sub2.con                       = 0.0610,
   plot_title                                    = "Childhood Trauma",
-  folder_location                               = "",
-  filename                                      = "Childhood Trauma.minimum",
+  filename                                      = "Childhood Trauma",
   pop.prev_case                                 = 0.16,
   
   # All variables below can optionally be added to the input.list
@@ -187,7 +186,6 @@ input.list.3D <- list(
   rg_sub1.con_sub2.con                          = 0.6011,
   rg_se_sub1.con_sub2.con                       = 0.0610,
   plot_title                                    = "Childhood Trauma",
-  folder_location                               = "output",
   filename                                      = "Childhood Trauma",
   pop.prev_case                                 = 0.16, 
   
@@ -288,7 +286,6 @@ input.list.2D.2D <- list(
 
   # General info triangle 1
   triangle1.plot_title                                  = "Childhood Trauma",
-  triangle1.folder_location                             = "GDVIS_tutorial_output",
   triangle1.filename                                    = "Childhood Trauma",
   triangle1.pop.prev_case                               = 0.16,
   
@@ -322,7 +319,6 @@ input.list.2D.2D <- list(
 
   # General info triangle 2
   triangle2.plot_title                                  = "Comorbid anxiety", 
-  triangle2.folder_location                             = "GDVIS_tutorial_output",
   triangle2.filename                                    = "Comorbid anxiety",
   triangle2.pop.prev_case                               = 0.16,
 
@@ -404,8 +400,7 @@ input.list.CD <- list(
   h2_trait3                                     = 0.0703,
   pop.prev_trait1                               = 0.004,
   pop.prev_trait2                               = 0.01,
-  pop.prev_trait3                               = 0.16,
-  folder_location                               = "GDVIS_tutorial_output")
+  pop.prev_trait3                               = 0.16)
 
 ```
 
