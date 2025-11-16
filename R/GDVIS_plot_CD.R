@@ -427,7 +427,7 @@ saveRDS(ui, file = paste0(folder_location, "/", name_trait1, "_",name_trait2,"_"
 saveRDS(server, file = paste0(folder_location, "/", name_trait1, "_",name_trait2,"_" ,name_trait3, "_server.rds"))
 
 # Show if asked
-if (show.rendering == TRUE) { assign("shiny_app", shiny_app, envir = .GlobalEnv); runApp(get("shiny_app", envir = .GlobalEnv)) }}
+if (show.rendering == TRUE) { assign("shiny_app", shiny_app, envir = .GlobalEnv); shiny::runApp(get("shiny_app", envir = .GlobalEnv)) }}
 
 
 #### For website plot --------------------------------------------------------------------------------------------------------

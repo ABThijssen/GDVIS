@@ -1889,13 +1889,13 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
     ### Save ----------------
 
     if (save_data) {
-          save(double.triangle.output.list, file = paste0(triangle1.folder_location,"/",triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData"))
-          cli::cli_alert_info(paste0(" Data saved as ", triangle1.folder_location,"/",triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData"))
+          save(double.triangle.output.list, file = file.path(triangle1.folder_location, paste0(triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData")))
+          cli::cli_alert_info(file.path(" Data saved as ", triangle1.folder_location, paste0(triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData")))
     }
 
      # Save for webversion
     if (webversion == TRUE & save_data == TRUE) {
-      save_path <- paste0(triangle1.folder_location,"/",triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData")
+      save_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData"))
       save(double.triangle.output.list, file = save_path)
       log_fun("For more info see the logfile", type = "info")
       return(list(
@@ -2166,7 +2166,7 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
 
 
       # Save the list
-      save_path <- paste0(folder_location,"/",name_trait1, ".with.",name_trait1,".with.",name_trait3,".CD.triangle_parameters.RData")
+      save_path <- file.path(folder_location, paste0(name_trait1, ".with.",name_trait1,".with.",name_trait3,".CD.triangle_parameters.RData"))
       save(CD.triangle.output.list, file = save_path)
       cli::cli_alert_info(paste0(" Data saved as ", folder_location,"/",name_trait1, ".with.",name_trait1,".with.",name_trait3,".CD.triangle_parameters.RData"  ))
 
@@ -2204,8 +2204,8 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
       rounded_time <- as.POSIXct(round(as.numeric(Sys.time()) / 2) * 2, origin = "1970-01-01")
 
       # Open connection
-      con_path <- paste0(folder_location,"/", name_trait1,"_", name_trait2,"_", name_trait3,".CD.log.txt")
-      con_log <- file(paste0(folder_location,"/", name_trait1,"_", name_trait2,"_", name_trait3,".CD.log.txt"), open = "w")
+      con_path <- file.path(folder_location, paste0(name_trait1,"_", name_trait2,"_", name_trait3,".CD.log.txt"))
+      con_log <- file(file.path(folder_location, paste0(name_trait1,"_", name_trait2,"_", name_trait3,".CD.log.txt")), open = "w")
       cli::cli_alert_info(paste0(" For more info see ",folder_location,"/", name_trait1,"_", name_trait2,"_", name_trait3,".CD.log.txt"))
 
       # Write general info

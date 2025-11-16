@@ -545,7 +545,7 @@ GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, w
     saveRDS(server, file = paste0(triangle1.folder_location, "/", triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_server.rds"))
 
     # Show if asked, otherwise print that the plots are saved
-    if (show.rendering == TRUE) { assign("shiny_app", shiny_app, envir = .GlobalEnv); runApp(get("shiny_app", envir = .GlobalEnv)) }
+    if (show.rendering == TRUE) { assign("shiny_app", shiny_app, envir = .GlobalEnv); shiny::runApp(get("shiny_app", envir = .GlobalEnv)) }
 
     }
 
