@@ -1999,7 +1999,7 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
 
       # Function to generate matrix and find best fit
       generate_best_fit <- function(xs, ys, zs) {
-        xyz_matrix <- as.matrix(crossing(x = xs, y = ys, z = zs))
+        xyz_matrix <- as.matrix(tidyr::crossing(x = xs, y = ys, z = zs))
         best_fit <- test_matrix_fit(xyz_matrix) #%>% unlist()
         return(best_fit)}
 
