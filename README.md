@@ -1,7 +1,7 @@
 GDVIS tutorial
 ================
 Anaïs Thijssen (<a.b.thijssen@gmail.com>)
-2025-09-19
+2025-11-11
 
 ------------------------------------------------------------------------
 
@@ -23,6 +23,14 @@ Check out the GDVIS website here: <https://gdvis.shinyapps.io/gdvis/>.
 # Download and install GDVIS
 
 \[to be added, for now source locally\]
+
+``` r
+source("R/GDVIS_calc.R")
+source("R/GDVIS_plot_2D.R")
+source("R/GDVIS_plot_2D_2D.R")
+source("R/GDVIS_plot_3D.R")
+source("R/GDVIS_plot_CD.R")
+```
 
 ------------------------------------------------------------------------
 
@@ -129,7 +137,7 @@ input.list <- list(
   rg_sub1.con_sub2.con                          = 0.6011,
   rg_se_sub1.con_sub2.con                       = 0.0610,
   plot_title                                    = "Childhood Trauma",
-  folder_location                               = "GDVIS_tutorial_examples",
+  folder_location                               = "GDVIS_tutorial_output",
   filename                                      = "Childhood Trauma.minimum",
   pop.prev_case                                 = 0.16,
   
@@ -149,7 +157,8 @@ input.list <- list(
 ```
 
 **Pass input list to GDVIS_calc**  
-A logfile will also automatically be generated and saved
+A logfile will also automatically be generated and saved, which you can
+find in the folder GDVIS_tutorial_output on the github.
 
 ``` r
 output <- GDVIS_calc(input.list)
@@ -159,9 +168,9 @@ output <- GDVIS_calc(input.list)
 
     ## ── Running GDVIS calc on Childhood Trauma ──────────────────────────────────────
 
-    ## ℹ  Data saved as GDVIS_tutorial_examples/Childhood Trauma.minimum.2D.triangle_parameters.RData
+    ## ℹ  Data saved as GDVIS_tutorial_output/Childhood Trauma.minimum.2D.triangle_parameters.RData
 
-    ## ℹ  For more info see GDVIS_tutorial_examples/Childhood Trauma.minimum.2D.log.txt
+    ## ℹ  For more info see GDVIS_tutorial_output/Childhood Trauma.minimum.2D.log.txt
 
     ## ✔ GDVIS calc succesfully finished!
 
@@ -185,9 +194,16 @@ GDVIS_plot_2D(output, x_lower = -0.35, x_upper = 0.35, y_lower = -0.15, y_upper 
 
     ## ── Running GDVIS plot on Childhood Trauma ──────────────────────────────────────
 
-    ## ℹ  Plot saved as GDVIS_tutorial_examples/Childhood Trauma.minimum_2D.triangle_plot.png
+    ## Warning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2
+    ## 3.5.0.
+    ## ℹ Please use the `legend.position.inside` argument of `theme()` instead.
+    ## This warning is displayed once every 8 hours.
+    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+    ## generated.
 
-    ## ✔ GDVIS calc succesfully finished
+    ## ℹ  Plot saved as GDVIS_tutorial_output/Childhood Trauma.minimum_2D.triangle_plot.png
+
+    ## ✔ GDVIS plot succesfully finished
 
 ![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
@@ -251,7 +267,7 @@ input.list.3D <- list(
   rg_sub1.con_sub2.con                          = 0.6011,
   rg_se_sub1.con_sub2.con                       = 0.0610,
   plot_title                                    = "Childhood Trauma",
-  folder_location                               = "GDVIS_tutorial_examples",
+  folder_location                               = "GDVIS_tutorial_output",
   filename                                      = "Childhood Trauma",
   pop.prev_case                                 = 0.16, 
   
@@ -288,7 +304,8 @@ input.list.3D <- list(
 ```
 
 **Pass input list to GDVIS_calc**  
-A logfile will also automatically be generated and saved
+A logfile will also automatically be generated and saved, which you can
+find in the folder GDVIS_tutorial_output on the github.
 
 ``` r
 output.3D <- GDVIS_calc(input.list.3D)
@@ -300,9 +317,9 @@ output.3D <- GDVIS_calc(input.list.3D)
 
     ## ℹ  Calculating 3D coordinates, this may take some time ...
 
-    ## ℹ  Data saved as GDVIS_tutorial_examples/Childhood Trauma_Anxiety.3D.triangle_parameters.RData
+    ## ℹ  Data saved as GDVIS_tutorial_output/Childhood Trauma_Anxiety.3D.triangle_parameters.RData
 
-    ## ℹ  For more info see GDVIS_tutorial_examples/Childhood Trauma_Anxiety.3D.log.txt
+    ## ℹ  For more info see GDVIS_tutorial_output/Childhood Trauma_Anxiety.3D.log.txt
 
     ## ✔ GDVIS calc succesfully finished!
 
@@ -311,7 +328,7 @@ Pass the output object to the plot function to see the plot. The plot is
 created as .html, the legend as .png and the shiny app shows them
 together  
 Running the code below will open a window containing a shiny object that
-you can more in 3D space.  
+you can move in 3D space.  
 This RMarkdown file cannot handle interactive shiny output, for an
 example of the resulting visualization of the code below, see:
 <https://gdvis.shinyapps.io/gdvis/>  
@@ -388,7 +405,7 @@ input.list.2D.2D <- list(
 
   # General info triangle 1
   triangle1.plot_title                                  = "Childhood Trauma",
-  triangle1.folder_location                             = "GDVIS_tutorial_examples",
+  triangle1.folder_location                             = "GDVIS_tutorial_output",
   triangle1.filename                                    = "Childhood Trauma",
   triangle1.pop.prev_case                               = 0.16,
   
@@ -422,7 +439,7 @@ input.list.2D.2D <- list(
 
   # General info triangle 2
   triangle2.plot_title                                  = "Comorbid anxiety", 
-  triangle2.folder_location                             = "GDVIS_tutorial_examples",
+  triangle2.folder_location                             = "GDVIS_tutorial_output",
   triangle2.filename                                    = "Comorbid anxiety",
   triangle2.pop.prev_case                               = 0.16,
 
@@ -457,7 +474,8 @@ input.list.2D.2D <- list(
 ```
 
 **Pass input list to GDVIS_calc**  
-A logfile will also automatically be generated and saved.  
+A logfile will also automatically be generated and saved, which you can
+find in the folder GDVIS_tutorial_output on the github.  
 This function will first create the separate subtype plots (and save
 them) and then create the 3D visualization.
 
@@ -470,21 +488,21 @@ output.2D.2D <- GDVIS_calc(input.list.2D.2D)
     ## ── Running GDVIS calc in 2D.2D mode on Childhood Trauma and Comorbid anxiety ───
 
     ## Starting 2D calculations for Childhood Trauma
-    ## ℹ  Data saved as GDVIS_tutorial_examples/Childhood Trauma.2D.triangle_parameters.RData
+    ## ℹ  Data saved as GDVIS_tutorial_output/Childhood Trauma.2D.triangle_parameters.RData
     ## 
-    ## ℹ  For more info see GDVIS_tutorial_examples/Childhood Trauma.2D.log.txt
+    ## ℹ  For more info see GDVIS_tutorial_output/Childhood Trauma.2D.log.txt
     ## 
     ## ✔ GDVIS calc succesfully finished 2D calculations
     ## 
     ## Starting 2D calculations for Comorbid anxiety
-    ## ℹ  Data saved as GDVIS_tutorial_examples/Comorbid anxiety.2D.triangle_parameters.RData
+    ## ℹ  Data saved as GDVIS_tutorial_output/Comorbid anxiety.2D.triangle_parameters.RData
     ## 
-    ## ℹ  For more info see GDVIS_tutorial_examples/Comorbid anxiety.2D.log.txt
+    ## ℹ  For more info see GDVIS_tutorial_output/Comorbid anxiety.2D.log.txt
     ## 
     ## ✔ GDVIS calc succesfully finished 2D calculations
     ## 
     ## Starting 2D.2D calculations
-    ## ℹ  For more info see GDVIS_tutorial_examples/Childhood Trauma.with.Comorbid anxiety.2D.2D.log.txt
+    ## ℹ  For more info see GDVIS_tutorial_output/Childhood Trauma.with.Comorbid anxiety.2D.2D.log.txt
     ## 
     ## ✔ GDVIS calc succesfully finished!
 
@@ -512,4 +530,66 @@ GDVIS_plot_3D(output.3D)
 
 # GDVIS for multiple traits
 
-\[To be added\]
+**Create the input list**  
+Note that no standard errors are asked, you need to check yourself
+whether your data is sensible to plot.
+
+``` r
+input.list.CD <- list(
+  plot_CD                                       = TRUE,
+  name_trait1                                   = "SCZ_cases",
+  name_trait2                                   = "BIP_cases",
+  name_trait3                                   = "MDD_cases",
+  name_trait1.con                               = "SCZ_con",
+  name_trait2.con                               = "BIP_con",
+  name_trait3.con                               = "MDD_con",
+  rg_trait1_trait2                              = 0.6986,
+  rg_trait1_trait3                              = 0.3598,
+  rg_trait2_trait3                              = 0.4758,
+  h2_trait1                                     = 0.4118,
+  h2_trait2                                     = 0.2902,
+  h2_trait3                                     = 0.0703,
+  pop.prev_trait1                               = 0.004,
+  pop.prev_trait2                               = 0.01,
+  pop.prev_trait3                               = 0.16,
+  folder_location                               = "GDVIS_tutorial_output")
+```
+
+**Pass input list to GDVIS_calc**  
+A logfile will also automatically be generated and saved, which you can
+find in the folder GDVIS_tutorial_output on the github.
+
+``` r
+output.CD <- GDVIS_calc(input.list.CD)
+```
+
+    ## 
+
+    ## ── Running GDVIS calc in CD mode on SCZ_cases, BIP_cases and MDD_cases ─────────
+
+    ## ℹ  Data saved as GDVIS_tutorial_output/SCZ_cases.with.SCZ_cases.with.MDD_cases.CD.triangle_parameters.RData
+
+    ## ℹ  For more info see GDVIS_tutorial_output/SCZ_cases_BIP_cases_MDD_cases.CD.log.txt
+
+    ## ✔ GDVIS calc succesfully finished CD calculations!
+
+Pass the output object to the plot function to see the plot. The plot is
+created as .html, the legend as .png and the shiny app shows them
+together  
+Running the code below will open a window containing a shiny object that
+you can more in 3D space.  
+This RMarkdown file cannot handle interactive shiny output, for an
+example of the resulting visualization of the code below, see:
+<https://gdvis.shinyapps.io/gdvis/>  
+The plot below is a screenshot of the 3D interactive visualization.  
+It is possible to just make and save the plots without rendering them
+and to make the plots without showing the labels.
+
+**Plot the subtype**
+
+``` r
+#GDVIS_plot_CD(output.CD, show.rendering = FALSE, show.names = FALSE)
+GDVIS_plot_CD(output)
+```
+
+<img src="screenshot_CD.png" width="70%" style="display: block; margin: auto;" />

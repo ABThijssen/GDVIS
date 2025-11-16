@@ -1,0 +1,16 @@
+Package: GDVIS
+Title: Compute and visualize genetic distances
+Version: 0.0.0.9000
+Authors@R: 
+    person("Anaïs", "Thijssen", , "a.b.thijssen@gmail.com", role = c("aut", "cre"))
+Description: GDVIS computes and visualizes genetic distances between subtypes of a disorder, a subtype with an external trait, two subypes, or three external traits.
+License: CC BY 4.0
+Encoding: UTF-8
+Imports: 
+  cli,
+  ggplot2,
+  plotly,
+  htmlwidgets,
+  shiny
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2

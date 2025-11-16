@@ -13,6 +13,7 @@ author: "Anaïs Thijssen (a.b.thijssen@gmail.com)"
 knitr::opts_chunk$set(echo = TRUE)
 #knitr::opts_chunk$set(error = TRUE)
 knitr::opts_knit$set(stop_on_error = 0)   # never halt
+library(tidyverse)
 ```
 
 # Welcome to this GDVIS tutorial
@@ -28,13 +29,14 @@ Check out the GDVIS website here: <https://gdvis.shinyapps.io/gdvis/>.
 
 [to be added, for now source locally]
 
-```{r, include=FALSE}
+```{r, echo = TRUE, results="hide", message=FALSE, warning=FALSE}
 
 
-source("GDVIS_calc.R")
-source("GDVIS_plot_2D.R")
-source("GDVIS_plot_2D_2D.R")
-source("GDVIS_plot_3D.R")
+source("R/GDVIS_calc.R")
+source("R/GDVIS_plot_2D.R")
+source("R/GDVIS_plot_2D_2D.R")
+source("R/GDVIS_plot_3D.R")
+source("R/GDVIS_plot_CD.R")
 
 ```
 
@@ -100,7 +102,7 @@ input.list <- list(
   rg_sub1.con_sub2.con                          = 0.6011,
   rg_se_sub1.con_sub2.con                       = 0.0610,
   plot_title                                    = "Childhood Trauma",
-  folder_location                               = "GDVIS_tutorial_examples",
+  folder_location                               = "GDVIS_tutorial_output",
   filename                                      = "Childhood Trauma.minimum",
   pop.prev_case                                 = 0.16,
   
@@ -122,11 +124,9 @@ input.list <- list(
 
 
 **Pass input list to GDVIS_calc**   
-A logfile will also automatically be generated and saved
+A logfile will also automatically be generated and saved, which you can find in the folder GDVIS_tutorial_output on the github.
 ```{r}
-
 output <- GDVIS_calc(input.list)
-
 ```
 
 
@@ -137,10 +137,8 @@ Note that you can manually set the axes limits (this is especially nice if you h
 
 **Plot the subtype**
 ```{r}
-
 # GDVIS_plot_2D(output) This will run as well, but we will add some axes restaints 
 GDVIS_plot_2D(output, x_lower = -0.35, x_upper = 0.35, y_lower = -0.15, y_upper = 0.35)
-
 ```
 
 ---------------------------------------------------------------------------------------------------
@@ -189,7 +187,7 @@ input.list.3D <- list(
   rg_sub1.con_sub2.con                          = 0.6011,
   rg_se_sub1.con_sub2.con                       = 0.0610,
   plot_title                                    = "Childhood Trauma",
-  folder_location                               = "GDVIS_tutorial_examples",
+  folder_location                               = "GDVIS_tutorial_output",
   filename                                      = "Childhood Trauma",
   pop.prev_case                                 = 0.16, 
   
@@ -227,14 +225,14 @@ input.list.3D <- list(
 ```
 
 **Pass input list to GDVIS_calc**   
-A logfile will also automatically be generated and saved
+A logfile will also automatically be generated and saved, which you can find in the folder GDVIS_tutorial_output on the github.
 ```{r}
 output.3D <- GDVIS_calc(input.list.3D)
 ```
 
 **Plot the subtype with external trait**   
 Pass the output object to the plot function to see the plot. The plot is created as .html, the legend as .png and the shiny app shows them together   
-Running the code below will open a window containing a shiny object that you can more in 3D space.  
+Running the code below will open a window containing a shiny object that you can move in 3D space.  
 This RMarkdown file cannot handle interactive shiny output, for an example of the resulting visualization of the code below, see: https://gdvis.shinyapps.io/gdvis/   
 The plot below is a screenshot of the 3D interactive visualization.   
 It is possible to just make and save the plots without rendering them and to make the plots without showing the labels.    
@@ -290,7 +288,7 @@ input.list.2D.2D <- list(
 
   # General info triangle 1
   triangle1.plot_title                                  = "Childhood Trauma",
-  triangle1.folder_location                             = "GDVIS_tutorial_examples",
+  triangle1.folder_location                             = "GDVIS_tutorial_output",
   triangle1.filename                                    = "Childhood Trauma",
   triangle1.pop.prev_case                               = 0.16,
   
@@ -324,7 +322,7 @@ input.list.2D.2D <- list(
 
   # General info triangle 2
   triangle2.plot_title                                  = "Comorbid anxiety", 
-  triangle2.folder_location                             = "GDVIS_tutorial_examples",
+  triangle2.folder_location                             = "GDVIS_tutorial_output",
   triangle2.filename                                    = "Comorbid anxiety",
   triangle2.pop.prev_case                               = 0.16,
 
@@ -360,7 +358,7 @@ input.list.2D.2D <- list(
 ```
 
 **Pass input list to GDVIS_calc**   
-A logfile will also automatically be generated and saved.    
+A logfile will also automatically be generated and saved, which you can find in the folder GDVIS_tutorial_output on the github.     
 This function will first create the separate subtype plots (and save them) and then create the 3D visualization.   
 ```{r}
 output.2D.2D <- GDVIS_calc(input.list.2D.2D)
@@ -386,4 +384,52 @@ knitr::include_graphics("screenshot_2D_2D.png")
 ---------------------------------------------------------------------------------------------------
 
 # GDVIS for multiple traits
-[To be added]
+**Create the input list**     
+Note that no standard errors are asked, you need to check yourself whether your data is sensible to plot.
+```{r}
+
+input.list.CD <- list(
+  plot_CD                                       = TRUE,
+  name_trait1                                   = "SCZ_cases",
+  name_trait2                                   = "BIP_cases",
+  name_trait3                                   = "MDD_cases",
+  name_trait1.con                               = "SCZ_con",
+  name_trait2.con                               = "BIP_con",
+  name_trait3.con                               = "MDD_con",
+  rg_trait1_trait2                              = 0.6986,
+  rg_trait1_trait3                              = 0.3598,
+  rg_trait2_trait3                              = 0.4758,
+  h2_trait1                                     = 0.4118,
+  h2_trait2                                     = 0.2902,
+  h2_trait3                                     = 0.0703,
+  pop.prev_trait1                               = 0.004,
+  pop.prev_trait2                               = 0.01,
+  pop.prev_trait3                               = 0.16,
+  folder_location                               = "GDVIS_tutorial_output")
+
+```
+
+
+**Pass input list to GDVIS_calc**   
+A logfile will also automatically be generated and saved, which you can find in the folder GDVIS_tutorial_output on the github.
+```{r}
+output.CD <- GDVIS_calc(input.list.CD)
+```
+
+
+Pass the output object to the plot function to see the plot. The plot is created as .html, the legend as .png and the shiny app shows them together   
+Running the code below will open a window containing a shiny object that you can more in 3D space.  
+This RMarkdown file cannot handle interactive shiny output, for an example of the resulting visualization of the code below, see: https://gdvis.shinyapps.io/gdvis/   
+The plot below is a screenshot of the 3D interactive visualization.   
+It is possible to just make and save the plots without rendering them and to make the plots without showing the labels.   
+
+**Plot the subtype**
+```{r, eval = FALSE}
+#GDVIS_plot_CD(output.CD, show.rendering = FALSE, show.names = FALSE)
+GDVIS_plot_CD(output)
+```
+
+```{r, echo=FALSE, out.width="70%", fig.align="center"}
+knitr::include_graphics("screenshot_CD.png")
+```
+
