@@ -593,9 +593,9 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
                                         seq(from=0, to=1, by=0.01))      }
 
       # Finer matrix based on rough matrix (was 0.01)
-      coords_finer <- generate_best_fit(seq(from = coords_rough['x'] %>% pull() - 0.04, to = coords_rough['x'] %>% pull() + 0.04, by = 0.001),
-                                        seq(from = coords_rough['y'] %>% pull() - 0.04, to = coords_rough['y'] %>% pull() + 0.04, by = 0.001),
-                                        seq(from = max(0, coords_rough['z'] %>% pull() - 0.04), to = coords_rough['z'] %>% pull() + 0.04, by = 0.001) )
+      coords_finer <- generate_best_fit(seq(from = coords_rough['x'] %>% dplyr::pull() - 0.04, to = coords_rough['x'] %>% dplyr::pull() + 0.04, by = 0.001),
+                                        seq(from = coords_rough['y'] %>% dplyr::pull() - 0.04, to = coords_rough['y'] %>% dplyr::pull() + 0.04, by = 0.001),
+                                        seq(from = max(0, coords_rough['z'] %>% dplyr::pull() - 0.04), to = coords_rough['z'] %>% dplyr::pull() + 0.04, by = 0.001) )
 
       # Coords finest if there are multiple peaks of best fit
        coords_finest <- tibble()
@@ -606,9 +606,9 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
          line <- coords_finer[i,]
 
          # Test the row
-         out <- generate_best_fit(seq(from=line['x'] %>% pull() - 0.004, to=line['x'] %>% pull() + 0.004, by=0.0001),
-                                  seq(from=line['y'] %>% pull() - 0.004, to=line['y'] %>% pull() + 0.004, by=0.0001),
-                                  seq(from=line['z'] %>% pull() - 0.004, to=line['z'] %>% pull() + 0.004, by=0.0001))
+         out <- generate_best_fit(seq(from=line['x'] %>% dplyr::pull() - 0.004, to=line['x'] %>% dplyr::pull() + 0.004, by=0.0001),
+                                  seq(from=line['y'] %>% dplyr::pull() - 0.004, to=line['y'] %>% dplyr::pull() + 0.004, by=0.0001),
+                                  seq(from=line['z'] %>% dplyr::pull() - 0.004, to=line['z'] %>% dplyr::pull() + 0.004, by=0.0001))
 
          # Add fit to results
          coords_finest <- rbind(coords_finest, out)
@@ -629,22 +629,22 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
 
 
       # Finest matrix based on finer matrix (was 0.002)
-      # coords_finest <- generate_best_fit(seq(from=coords_finer['x'] %>% pull() - 0.004, to=coords_finer['x'] %>% pull() + 0.004, by=0.0001),
-      #                                    seq(from=coords_finer['y'] %>% pull() - 0.004, to=coords_finer['y'] %>% pull() + 0.004, by=0.0001),
-      #                                    seq(from=coords_finer['z'] %>% pull() - 0.004, to=coords_finer['z'] %>% pull() + 0.004, by=0.0001))
+      # coords_finest <- generate_best_fit(seq(from=coords_finer['x'] %>% dplyr::pull() - 0.004, to=coords_finer['x'] %>% dplyr::pull() + 0.004, by=0.0001),
+      #                                    seq(from=coords_finer['y'] %>% dplyr::pull() - 0.004, to=coords_finer['y'] %>% dplyr::pull() + 0.004, by=0.0001),
+      #                                    seq(from=coords_finer['z'] %>% dplyr::pull() - 0.004, to=coords_finer['z'] %>% dplyr::pull() + 0.004, by=0.0001))
 
       # Finest matrix based on finer matrix (was 0.002)
-      coords_finestest <- generate_best_fit(seq(from=coords_finest['x'] %>% pull() - 0.0004, to=coords_finest['x'] %>% pull() + 0.0004, by=0.00001),
-                                         seq(from=coords_finest['y'] %>% pull() - 0.0004, to=coords_finest['y'] %>% pull() + 0.0004, by=0.00001),
-                                         seq(from=coords_finest['z'] %>% pull() - 0.0004, to=coords_finest['z'] %>% pull() + 0.0004, by=0.00001))
+      coords_finestest <- generate_best_fit(seq(from=coords_finest['x'] %>% dplyr::pull() - 0.0004, to=coords_finest['x'] %>% dplyr::pull() + 0.0004, by=0.00001),
+                                         seq(from=coords_finest['y'] %>% dplyr::pull() - 0.0004, to=coords_finest['y'] %>% dplyr::pull() + 0.0004, by=0.00001),
+                                         seq(from=coords_finest['z'] %>% dplyr::pull() - 0.0004, to=coords_finest['z'] %>% dplyr::pull() + 0.0004, by=0.00001))
 
       # Coordinates
       #coords_matrix <- rbind(coords_rough, coords_finer, coords_finest, coords_finestest)
 
       # Extract coordinates
-      x.ext <- coords_finestest %>% select(x) %>% pull()
-      y.ext <- coords_finestest %>% select(y) %>% pull()
-      z.ext <- coords_finestest %>% select(z) %>% pull()
+      x.ext <- coords_finestest %>% dplyr::select(x) %>% dplyr::pull()
+      y.ext <- coords_finestest %>% dplyr::select(y) %>% dplyr::pull()
+      z.ext <- coords_finestest %>% dplyr::select(z) %>% dplyr::pull()
 
       ## Step 4: Move the line to popmean (x and z coordinates stay the same)
       y.ext  <- y.ext + abs(y.con)
@@ -1977,8 +1977,8 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
           return(fit_trait1+fit_trait2+fit_popmean)}
 
         # Find the differences for each combination of x,y,z and add it to the matrix
-        xyz_fit <- as_tibble(xyz_matrix) %>%
-          rowwise() %>%
+        xyz_fit <- tibble::as_tibble(xyz_matrix) %>%
+          dplyr::rowwise() %>%
           dplyr::mutate(fit = test_row_fit(x, y, z))
 
         # Get the lowest fit
@@ -2000,12 +2000,12 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
                                         seq(from=0, to=1, by=0.01))
 
       # Finer matrix based on rough matrix (was 0.01)
-      coords_finer <- generate_best_fit(seq(from = coords_rough['x'] %>% pull() - 0.04, to = coords_rough['x'] %>% pull() + 0.04, by = 0.001),
-                                        seq(from = coords_rough['y'] %>% pull() - 0.04, to = coords_rough['y'] %>% pull() + 0.04, by = 0.001),
-                                        seq(from = max(0, coords_rough['z'] %>% pull() - 0.04), to = coords_rough['z'] %>% pull() + 0.04, by = 0.001) )
+      coords_finer <- generate_best_fit(seq(from = coords_rough['x'] %>% dplyr::pull() - 0.04, to = coords_rough['x'] %>% dplyr::pull() + 0.04, by = 0.001),
+                                        seq(from = coords_rough['y'] %>% dplyr::pull() - 0.04, to = coords_rough['y'] %>% dplyr::pull() + 0.04, by = 0.001),
+                                        seq(from = max(0, coords_rough['z'] %>% dplyr::pull() - 0.04), to = coords_rough['z'] %>% dplyr::pull() + 0.04, by = 0.001) )
 
       # Coords finest
-      coords_finest <- tibble()
+      coords_finest <- tibble::tibble()
 
       for (i in 1:nrow(coords_finer)) {
 
@@ -2013,9 +2013,9 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
         line <- coords_finer[i,]
 
         # Test the row
-        out <- generate_best_fit(seq(from=line['x'] %>% pull() - 0.004, to=line['x'] %>% pull() + 0.004, by=0.0001),
-                                 seq(from=line['y'] %>% pull() - 0.004, to=line['y'] %>% pull() + 0.004, by=0.0001),
-                                 seq(from=line['z'] %>% pull() - 0.004, to=line['z'] %>% pull() + 0.004, by=0.0001))
+        out <- generate_best_fit(seq(from=line['x'] %>% dplyr::pull() - 0.004, to=line['x'] %>% dplyr::pull() + 0.004, by=0.0001),
+                                 seq(from=line['y'] %>% dplyr::pull() - 0.004, to=line['y'] %>% dplyr::pull() + 0.004, by=0.0001),
+                                 seq(from=line['z'] %>% dplyr::pull() - 0.004, to=line['z'] %>% dplyr::pull() + 0.004, by=0.0001))
 
         # Add fit to results
         coords_finest <- rbind(coords_finest, out)
@@ -2033,14 +2033,14 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
       coords_finest <- coords_finest[1,]
 
       # Finest matrix based on finer matrix (was 0.002)
-      coords_finestest <- generate_best_fit(seq(from=coords_finest['x'] %>% pull() - 0.0004, to=coords_finest['x'] %>% pull() + 0.0004, by=0.00001),
-                                            seq(from=coords_finest['y'] %>% pull() - 0.0004, to=coords_finest['y'] %>% pull() + 0.0004, by=0.00001),
-                                            seq(from=coords_finest['z'] %>% pull() - 0.0004, to=coords_finest['z'] %>% pull() + 0.0004, by=0.00001))
+      coords_finestest <- generate_best_fit(seq(from=coords_finest['x'] %>% dplyr::pull() - 0.0004, to=coords_finest['x'] %>% dplyr::pull() + 0.0004, by=0.00001),
+                                            seq(from=coords_finest['y'] %>% dplyr::pull() - 0.0004, to=coords_finest['y'] %>% dplyr::pull() + 0.0004, by=0.00001),
+                                            seq(from=coords_finest['z'] %>% dplyr::pull() - 0.0004, to=coords_finest['z'] %>% dplyr::pull() + 0.0004, by=0.00001))
 
       # Extract coordinates
-      x.trait3 <- coords_finestest %>% select(x) %>% pull()
-      y.trait3 <- coords_finestest %>% select(y) %>% pull()
-      z.trait3 <- coords_finestest %>% select(z) %>% pull()
+      x.trait3 <- coords_finestest %>% dplyr::select(x) %>% dplyr::pull()
+      y.trait3 <- coords_finestest %>% dplyr::select(y) %>% dplyr::pull()
+      z.trait3 <- coords_finestest %>% dplyr::select(z) %>% dplyr::pull()
       coord_trait3 <- c(x.trait3, y.trait3, z.trait3)
 
       ## Get coordinates of trait cases to trait controls
