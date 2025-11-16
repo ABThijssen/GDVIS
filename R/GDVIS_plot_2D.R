@@ -160,7 +160,7 @@ GDVIS_plot_2D <- function(input_triangle_parameters, x_lower = NULL, x_upper = N
             legend.position = c(0.15, 0.5),
             legend.title = ggplot2::element_text(size = 10),                           # Adjusts the size of the legend title
             legend.text = ggplot2::element_text(size = 8),                             # Adjusts the size of the legend text (labels)
-            legend.key.size = ggplot2::unit(0.5, "cm")) +                              # Adjusts the size of the keys in the legend
+            legend.key.size = grid::unit(0.5, "cm")) +                              # Adjusts the size of the keys in the legend
       ggplot2::guides(color = ggplot2::guide_legend(order = 1), fill = ggplot2::guide_legend(order = 2), shape = ggplot2::guide_legend(order = 3)) +
 
       # Scale axes
@@ -169,10 +169,10 @@ GDVIS_plot_2D <- function(input_triangle_parameters, x_lower = NULL, x_upper = N
       # Plot the arrows
       if(rg_sub1.con_sub2.con < 1) {
         plot <- plot +
-          ggplot2::geom_segment(ggplot2::aes(x = arrow.subsub_line.start[1], y = arrow.subsub_line.start[2], xend = arrow.subsub_line.end[1], yend = arrow.subsub_line.end[2]), color = "#7030A0", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
-          ggplot2::geom_segment(ggplot2::aes(x = arrow.allcases_line.start[1], y = arrow.allcases_line.start[2], xend = arrow.allcases_line.end[1], yend = arrow.allcases_line.end[2]), color = "lightgray", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
-          ggplot2::geom_segment(ggplot2::aes(x = arrow.sub1_line.start[1], y = arrow.sub1_line.start[2], xend = arrow.sub1_line.end[1], yend = arrow.sub1_line.end[2]), color = "#ED7D31", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed")) +
-          ggplot2::geom_segment(ggplot2::aes(x = arrow.sub2_line.start[1], y = arrow.sub2_line.start[2], xend = arrow.sub2_line.end[1], yend = arrow.sub2_line.end[2]), color = "#00B050", linewidth = 0.5, arrow = arrow(length = unit(0.2, "cm"), type = "closed"))
+          ggplot2::geom_segment(ggplot2::aes(x = arrow.subsub_line.start[1], y = arrow.subsub_line.start[2], xend = arrow.subsub_line.end[1], yend = arrow.subsub_line.end[2]), color = "#7030A0", linewidth = 0.5, arrow = grid::arrow(length = grid::unit(0.2, "cm"), type = "closed")) +
+          ggplot2::geom_segment(ggplot2::aes(x = arrow.allcases_line.start[1], y = arrow.allcases_line.start[2], xend = arrow.allcases_line.end[1], yend = arrow.allcases_line.end[2]), color = "lightgray", linewidth = 0.5, arrow = grid::arrow(length = grid::unit(0.2, "cm"), type = "closed")) +
+          ggplot2::geom_segment(ggplot2::aes(x = arrow.sub1_line.start[1], y = arrow.sub1_line.start[2], xend = arrow.sub1_line.end[1], yend = arrow.sub1_line.end[2]), color = "#ED7D31", linewidth = 0.5, arrow = grid::arrow(length = grid::unit(0.2, "cm"), type = "closed")) +
+          ggplot2::geom_segment(ggplot2::aes(x = arrow.sub2_line.start[1], y = arrow.sub2_line.start[2], xend = arrow.sub2_line.end[1], yend = arrow.sub2_line.end[2]), color = "#00B050", linewidth = 0.5, arrow = grid::arrow(length = grid::unit(0.2, "cm"), type = "closed"))
         }
 
       # Conditionally set x and y axis limits
