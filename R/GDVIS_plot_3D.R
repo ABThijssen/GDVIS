@@ -511,7 +511,7 @@ GDVIS_plot_3D <- function(input_triangle_parameters, show.rendering = TRUE, show
       saveRDS(server, file = paste0(folder_location, "/", filename3D, "_server.rds"))
 
       # Show if asked
-      if (show.rendering == TRUE) { assign("shiny_app", shiny_app, envir = .GlobalEnv); runApp(get("shiny_app", envir = .GlobalEnv)) }
+      if (show.rendering == TRUE) { assign("shiny_app", shiny_app, envir = .GlobalEnv); shiny::runApp(get("shiny_app", envir = .GlobalEnv)) }
       }
 
       if (webversion == TRUE) {
