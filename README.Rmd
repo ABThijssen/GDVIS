@@ -372,8 +372,8 @@ This RMarkdown file cannot handle interactive shiny output, for an example of th
 The plot below is a screenshot of the 3D interactive visualization.   
 It is possible to just make and save the plots without rendering them and to make the plots without showing the labels.    
 ```{r, eval = FALSE}
-#GDVIS_plot_3D(output.3D, show.rendering = FALSE, show.names = FALSE)
-GDVIS_plot_3D(output.3D)
+#GDVIS_plot_2D.2D(output.2D.2D, show.rendering = FALSE, show.names = FALSE)
+GDVIS_plot_2D_2D(output.2D.2D)
 ```
 
 

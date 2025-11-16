@@ -382,7 +382,8 @@ GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, w
 
 
     # Save
-    htmlwidgets::saveWidget(fig, paste0(triangle1.folder_location, "/", triangle1.filename, ".vs.",triangle2.filename,".html"))
+    html_save_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".vs.",triangle2.filename,".html")) %>% gsub("^/", "", .)
+    htmlwidgets::saveWidget(fig, html_save_path)
 
     # Return message
     cli::cli_alert_info(paste0(" Plot saved as ", triangle1.folder_location, "/", triangle1.filename, ".vs.",triangle2.filename,".html"))
@@ -499,7 +500,8 @@ GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, w
 
 
     ### Save legend
-    ggplot2::ggsave(paste0(triangle1.folder_location, "/", triangle1.filename, ".vs.", triangle2.filename, "2D_2Dlegend.png"), plot = legend, width = 4, height = 8, dpi = 300)
+    legend_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".vs.", triangle2.filename, "2D_2Dlegend.png")) %>% gsub("^/", "", .)
+    ggplot2::ggsave(legend_path, plot = legend, width = 4, height = 8, dpi = 300)
 
     # Return message
     cli::cli_alert_info(paste0(" Legend saved as ", triangle1.folder_location, "/", triangle1.filename, ".vs.", triangle2.filename, "2D_2Dlegend.png"))
@@ -515,8 +517,8 @@ GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, w
 
     # Define UI for the shiny app
     ui <- shiny::fluidPage(shiny::fluidRow(
-      column(8, plotly::plotlyOutput("plotly_plot", height = "600px")),   # 8/12 width for the plotly plot
-      column(4, shiny::plotOutput("ggplot_legend", height = "600px"))))    # 4/12 width for the ggplot legend
+      shiny::column(8, plotly::plotlyOutput("plotly_plot", height = "600px")),   # 8/12 width for the plotly plot
+      shiny::column(4, shiny::plotOutput("ggplot_legend", height = "600px"))))    # 4/12 width for the ggplot legend
 
     # Define server logic for the shiny app
     server <- function(input, output, session) {
@@ -531,18 +533,21 @@ GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, w
     shiny_app <- shiny::shinyApp(ui = ui, server = server)
 
     # Remove the folder if it already already exists (shiny doesn't overwrite)
-    save_path <- paste0(triangle1.folder_location, "/", triangle1.filename, ".vs.", triangle2.filename, "_files")
+    save_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".vs.", triangle2.filename, "_files")) %>% gsub("^/", "", .)
     if (dir.exists(save_path)) {
       Sys.chmod(save_path, mode = "777", use_umask = FALSE)  # Grant full permissions
       unlink(save_path, recursive = TRUE, force = TRUE)      # Force delete
       }
 
     # Save the Shiny app script as a .R file
-    saveRDS(shiny_app, file = paste0(triangle1.folder_location, "/", triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_shiny_app.rds"))
+    shiny_save_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_shiny_app.rds")) %>% gsub("^/", "", .)
+    saveRDS(shiny_app, file = shine_save_path)
 
     # Save the UI and server components separately
-    saveRDS(ui, file = paste0(triangle1.folder_location, "/", triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_ui.rds"))
-    saveRDS(server, file = paste0(triangle1.folder_location, "/", triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_server.rds"))
+    ui_save_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_ui.rds")) %>% gsub("^/", "", .)
+    saveRDS(ui, file = ui_save_path)
+    server_save_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_server.rds"))
+    saveRDS(server, file = server_save_path)
 
     # Show if asked, otherwise print that the plots are saved
     if (show.rendering == TRUE) { assign("shiny_app", shiny_app, envir = .GlobalEnv); shiny::runApp(get("shiny_app", envir = .GlobalEnv)) }

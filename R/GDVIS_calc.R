@@ -76,6 +76,9 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
   if (!"plot_2D.2D" %in% names(triangle.input.list))  {triangle.input.list$plot_2D.2D <- FALSE }
   if (!"plot_CD" %in% names(triangle.input.list))  {triangle.input.list$plot_CD <- FALSE }
 
+  # Add folder_location if not in input list
+  if (!"folder_location" %in% names(triangle.input.list)) {triangle.input.list$folder_location <- ""}
+
   ## Print the subgroup to the console
   if (triangle.input.list$plot_3D == TRUE & webversion == TRUE) {
     log_fun(paste0("Running GDVIS calc on ", triangle.input.list$plot_title, " with ",  triangle.input.list$name_ext), type = "info") }
@@ -1473,8 +1476,8 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
     rg_smallest_se_value <- get(rg_name)
 
     # Get the corresponding subtypes
-    flat_subtype <- str_extract(smallest_se_name, "(?<=triangle1\\.)[^.]+")
-    rotated_subtype <- str_extract(smallest_se_name, "(?<=triangle2\\.)[^.]+")
+    flat_subtype <- stringr::str_extract(smallest_se_name, "(?<=triangle1\\.)[^.]+")
+    rotated_subtype <- stringr::str_extract(smallest_se_name, "(?<=triangle2\\.)[^.]+")
 
     # Make vectors for wcontrols lines
     coord_2r <- paste0("triangle2.coord_", rotated_subtype)
@@ -1880,9 +1883,7 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
 
     cli::cli_alert_info(paste0(" For more info see ",triangle1.folder_location,"/",triangle1.filename, ".with.",triangle2.filename,".2D.2D.log.txt"))
 
-    cli::cli_alert_success("GDVIS calc succesfully finished!")
-    if(webversion == FALSE){
-    return(file.path(triangle1.folder_location,paste0(triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData")))}
+
 
 
   #  return(mget(ls()))
@@ -1904,7 +1905,12 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
       return(list(
         save_path = save_path,
         log_path = con_path    ))
-     }
+    }
+
+    cli::cli_alert_success("GDVIS calc 2D.2D succesfully finished!")
+    if(webversion == FALSE & plot_2D.2D == TRUE){
+      return(file.path(triangle1.folder_location,paste0(triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData")))}
+
 
     } # End if 2D.2D = T
 
