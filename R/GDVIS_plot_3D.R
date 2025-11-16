@@ -335,7 +335,8 @@ GDVIS_plot_3D <- function(input_triangle_parameters, show.rendering = TRUE, show
 
 
       # Save
-      htmlwidgets::saveWidget(fig, paste0(folder_location, "/", filename3D,"_3D.plot.html"))
+      save_path <- file.path(folder_location, paste0(filename3D,"_3D.plot.html")) %>% gsub("^/", "", .)
+      htmlwidgets::saveWidget(fig, save_path)
 
       # Return message
       cli::cli_alert_info(paste0(" Plot saved as ", folder_location,"/",filename3D,"_3D.plot.html"))
@@ -466,7 +467,8 @@ GDVIS_plot_3D <- function(input_triangle_parameters, show.rendering = TRUE, show
 
 
       ### Save legend
-      suppressWarnings({ ggplot2::ggsave(paste0(folder_location, "/", filename3D,"_3D.legend.png"), plot = legend, width = 4, height = 8, dpi = 300) })
+      save_path_legend <- file.path(folder_location, paste0(filename3D,"_3D.legend.png")) %>% gsub("^/", "", .)
+      suppressWarnings({ ggplot2::ggsave(save_path_legend, plot = legend, width = 4, height = 8, dpi = 300) })
 
 
       # Return message
@@ -500,15 +502,18 @@ GDVIS_plot_3D <- function(input_triangle_parameters, show.rendering = TRUE, show
       shiny_app <- shiny::shinyApp(ui = ui, server = server)
 
       # Remove the folder if it already already exists (shiny doesn't overwrite)
-      save_path <- paste0(folder_location, "/",plot_title, ".", name_ext, "_3D.plot_files")
+      save_path <- file.path(folder_location, paste0(plot_title, ".", name_ext, "_3D.plot_files")) %>% gsub("^/", "", .)
       if (dir.exists(save_path)) { unlink(save_path, recursive = T)   }
 
       # Save the Shiny app script as a .R file
-      saveRDS(shiny_app, file = paste0(folder_location, "/", filename3D, "_shiny_app.rds"))
+      save_file_rds <- file.path(folder_location, paste0(filename3D, "_shiny_app.rds")) %>% gsub("^/", "", .)
+      saveRDS(shiny_app, file = save_file_rds)
 
       # Save the UI and server components separately
-      saveRDS(ui, file = paste0(folder_location, "/", filename3D, "_ui.rds"))
-      saveRDS(server, file = paste0(folder_location, "/", filename3D, "_server.rds"))
+      save_file_ui <- file.path(folder_location, paste0(filename3D, "_ui.rds")) %>% gsub("^/", "", .)
+      saveRDS(ui, file = save_file_ui)
+      save_file_path_rds <- file.path(folder_location, paste0(filename3D, "_server.rds")) %>% gsub("^/", "", .)
+      saveRDS(server, file = save_file_path_rds)
 
       # Show if asked
       if (show.rendering == TRUE) { assign("shiny_app", shiny_app, envir = .GlobalEnv); shiny::runApp(get("shiny_app", envir = .GlobalEnv)) }
