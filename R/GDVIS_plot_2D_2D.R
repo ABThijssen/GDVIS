@@ -410,89 +410,89 @@ GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, w
     legend <- ggplot2::ggplot() +
 
       # Plot allcases and pop mean
-      ggplot2::geom_point(aes(x = 0, y = -1.435), shape = 15, size = 4.5, color = "black") +
-      ggplot2::geom_text(aes(x = 0.115, y = -1.42), label = triangle1.name_allcases, color = "black", hjust = 0, size = 5) +
-      ggplot2::geom_point(aes(x = 0, y = -1.31), shape = 4, size = 4.5, stroke = 2) +
-      ggplot2::geom_text(aes(x = 0.115, y = -1.31), label = "Population mean", color = "black", hjust = 0, size = 5) +
+      ggplot2::geom_point(ggplot2::aes(x = 0, y = -1.435), shape = 15, size = 4.5, color = "black") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.115, y = -1.42), label = triangle1.name_allcases, color = "black", hjust = 0, size = 5) +
+      ggplot2::geom_point(ggplot2::aes(x = 0, y = -1.31), shape = 4, size = 4.5, stroke = 2) +
+      ggplot2::geom_text(ggplot2::aes(x = 0.115, y = -1.31), label = "Population mean", color = "black", hjust = 0, size = 5) +
 
       # Plot angles
       # Triangle relations
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-1.08, -1.11)), color = "#ED7D31", linewidth = 1.5) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-1.08, -1.03)), color = "#00B050", linewidth = 1.5, linetype = "11") +
-      ggplot2::geom_text(aes(x = 0.3, y = -1.07), label = paste0(rg_rsub2.con_sub1.con, " (", a.deg_rsub2.con_sub1.con, "°)"), color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.955, -0.985)), color = "#00B050", linewidth = 1.5) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.955, -0.91)), color = "#ED7D31", linewidth = 1.5, linetype = "11") +
-      ggplot2::geom_text(aes(x = 0.3, y = -0.945), label = paste0(rg_rsub1.con_sub2.con, " (", a.deg_rsub1.con_sub2.con, "°)"), color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.83, -0.86)), color = "#00B050", linewidth = 1.5) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.83, -0.78)), color = "#00B050", linewidth = 1.5, linetype = "11") +
-      ggplot2::geom_text(aes(x = 0.3, y = -0.815), label = paste0(rg_rsub2.con_sub2.con, " (", a.deg_rsub2.con_sub2.con, "°)"), color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.705, -0.66)), color = "#ED7D31", linewidth = 1.5) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.705, -0.74)), color = "#ED7D31", linewidth = 1.5, linetype = "11") +
-      ggplot2::geom_text(aes(x = 0.3, y = -0.695), label = paste0(rg_rsub1.con_sub1.con, " (", a.deg_rsub1.con_sub1.con, "°)"), color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.58, -0.61)), color = "#7030A0", linewidth = 1.5) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.58, -0.53)), color = "#7030A0", linewidth = 1.5, linetype = "11") +
-      ggplot2::geom_text(aes(x = 0.3, y = -0.57), label = paste0(rg_rsub1.rsub2_sub1.sub2, " (", a.deg_rsub1.rsub2_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-1.08, -1.11)), color = "#ED7D31", linewidth = 1.5) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-1.08, -1.03)), color = "#00B050", linewidth = 1.5, linetype = "11") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = -1.07), label = paste0(rg_rsub2.con_sub1.con, " (", a.deg_rsub2.con_sub1.con, "°)"), color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.955, -0.985)), color = "#00B050", linewidth = 1.5) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.955, -0.91)), color = "#ED7D31", linewidth = 1.5, linetype = "11") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = -0.945), label = paste0(rg_rsub1.con_sub2.con, " (", a.deg_rsub1.con_sub2.con, "°)"), color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.83, -0.86)), color = "#00B050", linewidth = 1.5) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.83, -0.78)), color = "#00B050", linewidth = 1.5, linetype = "11") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = -0.815), label = paste0(rg_rsub2.con_sub2.con, " (", a.deg_rsub2.con_sub2.con, "°)"), color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.705, -0.66)), color = "#ED7D31", linewidth = 1.5) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.705, -0.74)), color = "#ED7D31", linewidth = 1.5, linetype = "11") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = -0.695), label = paste0(rg_rsub1.con_sub1.con, " (", a.deg_rsub1.con_sub1.con, "°)"), color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.58, -0.61)), color = "#7030A0", linewidth = 1.5) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.58, -0.53)), color = "#7030A0", linewidth = 1.5, linetype = "11") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = -0.57), label = paste0(rg_rsub1.rsub2_sub1.sub2, " (", a.deg_rsub1.rsub2_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
       ggplot2::annotate("text", x = 0, y = -0.445, label = "Combined triangles", color = "black", hjust = 0, size = 5) +
 
       # Triangle 2
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.25, -0.28)), color = "#7030A0", linewidth = 1.5, linetype = "11") +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.25, -0.2)), color = "#ED7D31", linewidth = 1.5, linetype = "11") +
-      ggplot2::geom_text(aes(x = 0.3, y = -0.24), label = paste0(triangle2.rg_sub1.con_sub1.sub2, " (", triangle2.a.deg_sub1.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.125, -0.155)), color = "#ED7D31", linewidth = 1.5, linetype = "11") +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(-0.125, -0.07)), color = "#00B050", linewidth = 1.5, linetype = "11") +
-      ggplot2::geom_text(aes(x = 0.3, y = -0.11), label = paste0(triangle2.rg_sub1.con_sub2.con, " (", triangle2.a.deg_sub1.con_sub2.con, "°)"), color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(0.005, -0.025)), color = "#7030A0", linewidth = 1.5, linetype = "11") +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(0.005, 0.055)), color = "#00B050", linewidth = 1.5, linetype = "11") +
-      ggplot2::geom_text(aes(x = 0.3, y = 0.02), label = paste0(triangle2.rg_sub2.con_sub1.sub2, " (", triangle2.a.deg_sub2.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.25, -0.28)), color = "#7030A0", linewidth = 1.5, linetype = "11") +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.25, -0.2)), color = "#ED7D31", linewidth = 1.5, linetype = "11") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = -0.24), label = paste0(triangle2.rg_sub1.con_sub1.sub2, " (", triangle2.a.deg_sub1.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.125, -0.155)), color = "#ED7D31", linewidth = 1.5, linetype = "11") +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(-0.125, -0.07)), color = "#00B050", linewidth = 1.5, linetype = "11") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = -0.11), label = paste0(triangle2.rg_sub1.con_sub2.con, " (", triangle2.a.deg_sub1.con_sub2.con, "°)"), color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(0.005, -0.025)), color = "#7030A0", linewidth = 1.5, linetype = "11") +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(0.005, 0.055)), color = "#00B050", linewidth = 1.5, linetype = "11") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 0.02), label = paste0(triangle2.rg_sub2.con_sub1.sub2, " (", triangle2.a.deg_sub2.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
       ggplot2::annotate("text", x = 0, y = 0.14, label = triangle2.filename, color = "black", hjust = 0, size = 5) +
 
       # Triangle 1
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(0.34, 0.31)), color = "#ED7D31", linewidth = 1.5) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(0.34, 0.39)), color = "#00B050", linewidth = 1.5) +
-      ggplot2::geom_text(aes(x = 0.3, y = 0.35), label = paste0(triangle1.rg_sub1.con_sub2.con, " (", triangle1.a.deg_sub1.con_sub2.con, "°)"), color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(0.47, 0.44)), color = "#7030A0", linewidth = 1.5) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(0.47, 0.52)), color = "#00B050", linewidth = 1.5) +
-      ggplot2::geom_text(aes(x = 0.3, y = 0.475), label = paste0(triangle1.rg_sub2.con_sub1.sub2, " (", triangle1.a.deg_sub2.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(0.595, 0.565)), color = "#7030A0", linewidth = 1.5) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.23), y = c(0.595, 0.645)), color = "#ED7D31", linewidth = 1.5) +
-      ggplot2::geom_text(aes(x = 0.3, y = 0.595), label = paste0(triangle1.rg_sub1.con_sub1.sub2, " (", triangle1.a.deg_sub1.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(0.34, 0.31)), color = "#ED7D31", linewidth = 1.5) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(0.34, 0.39)), color = "#00B050", linewidth = 1.5) +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 0.35), label = paste0(triangle1.rg_sub1.con_sub2.con, " (", triangle1.a.deg_sub1.con_sub2.con, "°)"), color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(0.47, 0.44)), color = "#7030A0", linewidth = 1.5) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(0.47, 0.52)), color = "#00B050", linewidth = 1.5) +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 0.475), label = paste0(triangle1.rg_sub2.con_sub1.sub2, " (", triangle1.a.deg_sub2.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(0.595, 0.565)), color = "#7030A0", linewidth = 1.5) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.23), y = c(0.595, 0.645)), color = "#ED7D31", linewidth = 1.5) +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 0.595), label = paste0(triangle1.rg_sub1.con_sub1.sub2, " (", triangle1.a.deg_sub1.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
       ggplot2::annotate("text", x = 0, y = 0.725, label = triangle1.filename, color = "black", hjust = 0, size = 5) +
       ggplot2::annotate("text", x = -0.1, y = 0.875, label = "italic(r)[g] ~ '(degrees)'", color = "black", hjust = 0, size = 6.5, parse = TRUE) +
 
 
       # plot h2 lines
       # Allcases
-      ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(1.13, 1.13)), color = "gray", linewidth = 2) +
-      ggplot2::geom_text(aes(x = 0.3, y = 1.14), label = triangle2.h2_allcases.con, color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(1.13, 1.13)), color = "gray", linewidth = 2) +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 1.14), label = triangle2.h2_allcases.con, color = "black", hjust = 0, size = 6) +
       ggplot2::annotate("text", x = 0, y = 1.26, label = triangle1.name_allcases, color = "black", hjust = 0, size = 5) +
 
       # Triangle 2
-      ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(1.4, 1.4)), color = "#7030A0", linewidth = 2, linetype = "11") +
-      ggplot2::geom_text(aes(x = 0.3, y = 1.41), label = triangle2.h2_sub1.sub2, color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(1.525, 1.525)), color = "#ED7D31", linewidth = 2, linetype = "11") +
-      ggplot2::geom_text(aes(x = 0.3, y = 1.535), label = triangle2.h2_sub1.con, color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(1.65, 1.65)), color = "#00B050", linewidth = 2, linetype = "11") +
-      ggplot2::geom_text(aes(x = 0.3, y = 1.66), label = triangle2.h2_sub2.con, color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(1.4, 1.4)), color = "#7030A0", linewidth = 2, linetype = "11") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 1.41), label = triangle2.h2_sub1.sub2, color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(1.525, 1.525)), color = "#ED7D31", linewidth = 2, linetype = "11") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 1.535), label = triangle2.h2_sub1.con, color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(1.65, 1.65)), color = "#00B050", linewidth = 2, linetype = "11") +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 1.66), label = triangle2.h2_sub2.con, color = "black", hjust = 0, size = 6) +
       ggplot2::annotate("text", x = 0, y = 1.78, label = triangle2.filename, color = "black", hjust = 0, size = 5) +
 
       # Triangle 1
-      ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(1.92)), color = "#7030A0", linewidth = 2) +
-      ggplot2::geom_text(aes(x = 0.3, y = 1.93), label = triangle1.h2_sub1.sub2, color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(2.045, 2.045)), color = "#ED7D31", linewidth = 2) +
-      ggplot2::geom_text(aes(x = 0.3, y = 2.055), label = triangle1.h2_sub1.con, color = "black", hjust = 0, size = 6) +
-      ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(2.17, 2.17)), color = "#00B050", linewidth = 2) +
-      ggplot2::geom_text(aes(x = 0.3, y = 2.18), label = triangle1.h2_sub2.con, color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(1.92)), color = "#7030A0", linewidth = 2) +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 1.93), label = triangle1.h2_sub1.sub2, color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(2.045, 2.045)), color = "#ED7D31", linewidth = 2) +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 2.055), label = triangle1.h2_sub1.con, color = "black", hjust = 0, size = 6) +
+      ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(2.17, 2.17)), color = "#00B050", linewidth = 2) +
+      ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 2.18), label = triangle1.h2_sub2.con, color = "black", hjust = 0, size = 6) +
       ggplot2::annotate("text", x = 0, y = 2.3, label = triangle1.filename, color = "black", hjust = 0, size = 5) +
       ggplot2::annotate("text", x = -0.1, y = 2.48, label = "Heritability", color = "black", hjust = 0, size = 6.5) +
 
       # Clean background
       ggplot2::theme_minimal() +
-      ggplot2::theme(axis.title.x = element_blank(), axis.title.y = element_blank(),   # Remove axes titles
-            axis.text.x = element_blank(),  axis.text.y = element_blank(),    # Remove axes text
-            axis.ticks = element_blank(),                                     # Remove axes ticks
-            panel.grid.major = element_blank(),                               # Remove major gridlines
-            panel.grid.minor = element_blank(),                               # Remove minor gridlines
-            panel.background = element_rect(fill = "white", colour = NA)) +   # Set background color to white
+      ggplot2::theme(axis.title.x = ggplot2::element_blank(), axis.title.y = ggplot2::element_blank(),   # Remove axes titles
+            axis.text.x = ggplot2::element_blank(),  axis.text.y = ggplot2::element_blank(),    # Remove axes text
+            axis.ticks = ggplot2::element_blank(),                                     # Remove axes ticks
+            panel.grid.major = ggplot2::element_blank(),                               # Remove major gridlines
+            panel.grid.minor = ggplot2::element_blank(),                               # Remove minor gridlines
+            panel.background = ggplot2::element_rect(fill = "white", colour = NA)) +   # Set background color to white
       ggplot2::xlim(-0.1, 1.6) +
       # Scale axes
       ggplot2::coord_fixed(ratio = 1)

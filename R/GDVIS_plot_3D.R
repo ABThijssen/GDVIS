@@ -454,12 +454,12 @@ GDVIS_plot_3D <- function(input_triangle_parameters, show.rendering = TRUE, show
 
         # Clean background
         ggplot2::theme_minimal() +
-        ggplot2::theme(axis.title.x = element_blank(), axis.title.y = element_blank(),   # Remove axes titles
-              axis.text.x = element_blank(),  axis.text.y = element_blank(),    # Remove axes text
-              axis.ticks = element_blank(),                                     # Remove axes ticks
-              panel.grid.major = element_blank(),                               # Remove major gridlines
-              panel.grid.minor = element_blank(),                               # Remove minor gridlines
-              panel.background = element_rect(fill = "white", colour = NA)) +   # Set background color to white
+        ggplot2::theme(axis.title.x = ggplot2::element_blank(), axis.title.y = ggplot2::element_blank(),   # Remove axes titles
+              axis.text.x = ggplot2::element_blank(),  axis.text.y = ggplot2::element_blank(),    # Remove axes text
+              axis.ticks = ggplot2::element_blank(),                                     # Remove axes ticks
+              panel.grid.major = ggplot2::element_blank(),                               # Remove major gridlines
+              panel.grid.minor = ggplot2::element_blank(),                               # Remove minor gridlines
+              panel.background = ggplot2::element_rect(fill = "white", colour = NA)) +   # Set background color to white
         ggplot2::xlim(0, 1.6) +
         # Scale axes
         ggplot2::coord_fixed(ratio = 1)
