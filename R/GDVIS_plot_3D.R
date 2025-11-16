@@ -409,46 +409,46 @@ GDVIS_plot_3D <- function(input_triangle_parameters, show.rendering = TRUE, show
       legend <- ggplot2::ggplot() +
 
         # Plot allcases and pop mean
-        ggplot2::geom_point(aes(x = 0.1, y = -0.25), shape = 15, size = 4.5, color = "black") +
-        ggplot2::geom_text(aes(x = 0.2, y = -0.25), label = name_allcases, color = "black", hjust = 0, size = 5) +
-        ggplot2::geom_point(aes(x = 0.1, y = -0.125), shape = 3, size = 4, stroke = 2) +
-        ggplot2::geom_text(aes(x = 0.2, y = -0.125), label = "Population mean", color = "black", hjust = 0, size = 5) +
+        ggplot2::geom_point(ggplot2::aes(x = 0.1, y = -0.25), shape = 15, size = 4.5, color = "black") +
+        ggplot2::geom_text(ggplot2::aes(x = 0.2, y = -0.25), label = name_allcases, color = "black", hjust = 0, size = 5) +
+        ggplot2::geom_point(ggplot2::aes(x = 0.1, y = -0.125), shape = 3, size = 4, stroke = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.2, y = -0.125), label = "Population mean", color = "black", hjust = 0, size = 5) +
 
         # Plot angles with degrees
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.125, 0.095)), color = "#00B050", linewidth = 2) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.125, 0.175)), color = "#ED7D31", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 0.14), label = paste0(rg_sub1.con_sub2.con, " (", a.deg_sub1.con_sub2.con, "°)"), color = "black", hjust = 0, size = 6) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.26, 0.23)), color = "#7030A0", linewidth = 2) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.26, 0.31)), color = "#ED7D31", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 0.27), label = paste0(rg_sub1.con_sub1.sub2, " (", a.deg_sub1.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.385, 0.355)), color = "#7030A0", linewidth = 2) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.385, 0.435)), color = "#00B050", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 0.395), label = paste0(rg_sub2.con_sub1.sub2, " (", a.deg_sub2.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.51, 0.48)), color = "gray", linewidth = 2) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.51, 0.56)), color = "#2075B0", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 0.52), label = paste0(rg_allcases.con_ext, " (", a.deg_allcases.con_ext, "°)"), color = "black", hjust = 0, size = 6) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.635, 0.605)), color = "#00B050", linewidth = 2) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.635, 0.685)), color = "#2075B0", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 0.645), label = paste0(rg_sub2.con_ext, " (", a.deg_sub2.con_ext, "°)"), color = "black", hjust = 0, size = 6) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.765, 0.735)), color = "#ED7D31", linewidth = 2) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.765, 0.815)), color = "#2075B0", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 0.775), label = paste0(rg_sub1.con_ext, " (", a.deg_sub1.con_ext, "°)"), color = "black", hjust = 0, size = 6) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.89, 0.86)), color = "#7030A0", linewidth = 2) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(0.89, 0.94)), color = "#2075B0", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 0.9), label = paste0(rg_sub1.sub2_ext, " (", a.deg_sub1.sub2_ext, "°)"), color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.125, 0.095)), color = "#00B050", linewidth = 2) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.125, 0.175)), color = "#ED7D31", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 0.14), label = paste0(rg_sub1.con_sub2.con, " (", a.deg_sub1.con_sub2.con, "°)"), color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.26, 0.23)), color = "#7030A0", linewidth = 2) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.26, 0.31)), color = "#ED7D31", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 0.27), label = paste0(rg_sub1.con_sub1.sub2, " (", a.deg_sub1.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.385, 0.355)), color = "#7030A0", linewidth = 2) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.385, 0.435)), color = "#00B050", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 0.395), label = paste0(rg_sub2.con_sub1.sub2, " (", a.deg_sub2.con_sub1.sub2, "°)"), color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.51, 0.48)), color = "gray", linewidth = 2) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.51, 0.56)), color = "#2075B0", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 0.52), label = paste0(rg_allcases.con_ext, " (", a.deg_allcases.con_ext, "°)"), color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.635, 0.605)), color = "#00B050", linewidth = 2) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.635, 0.685)), color = "#2075B0", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 0.645), label = paste0(rg_sub2.con_ext, " (", a.deg_sub2.con_ext, "°)"), color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.765, 0.735)), color = "#ED7D31", linewidth = 2) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.765, 0.815)), color = "#2075B0", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 0.775), label = paste0(rg_sub1.con_ext, " (", a.deg_sub1.con_ext, "°)"), color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.89, 0.86)), color = "#7030A0", linewidth = 2) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.89, 0.94)), color = "#2075B0", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 0.9), label = paste0(rg_sub1.sub2_ext, " (", a.deg_sub1.sub2_ext, "°)"), color = "black", hjust = 0, size = 6) +
         ggplot2::annotate("text", x = 0, y = 1.05, label = "italic(r)[g] ~ '(degrees)'", color = "black", hjust = 0, size = 6.5, parse = TRUE) +
 
         # plot h2 lines
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(1.25, 1.25)), color = "#2075B0", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 1.26), label = h2_ext, color = "black", hjust = 0, size = 6) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(1.375, 1.375)), color = "gray", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 1.385), label = h2_allcases.con, color = "black", hjust = 0, size = 6) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(1.5, 1.5)), color = "#7030A0", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 1.51), label = h2_sub1.sub2, color = "black", hjust = 0, size = 6) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(1.625, 1.625)), color = "#ED7D31", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 1.635), label = h2_sub1.con, color = "black", hjust = 0, size = 6) +
-        ggplot2::geom_line(aes(x = c(0.1, 0.25), y = c(1.75, 1.75)), color = "#00B050", linewidth = 2) +
-        ggplot2::geom_text(aes(x = 0.3, y = 1.76), label = h2_sub2.con, color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(1.25, 1.25)), color = "#2075B0", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 1.26), label = h2_ext, color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(1.375, 1.375)), color = "gray", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 1.385), label = h2_allcases.con, color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(1.5, 1.5)), color = "#7030A0", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 1.51), label = h2_sub1.sub2, color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(1.625, 1.625)), color = "#ED7D31", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 1.635), label = h2_sub1.con, color = "black", hjust = 0, size = 6) +
+        ggplot2::geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(1.75, 1.75)), color = "#00B050", linewidth = 2) +
+        ggplot2::geom_text(ggplot2::aes(x = 0.3, y = 1.76), label = h2_sub2.con, color = "black", hjust = 0, size = 6) +
         #annotate("text", x = 0, y = 1.91, label = "italic(h)^2 ~ italic(obs)[50/50]", color = "black", hjust = 0, size = 6.5, parse = TRUE) +
         ggplot2::annotate("text", x = 0, y = 1.91, label = "Heritability", color = "black", hjust = 0, size = 6.5) +
 
