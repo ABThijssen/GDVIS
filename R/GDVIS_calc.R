@@ -926,19 +926,19 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
     if(save_data == TRUE ) {
 
       if (plot_3D == TRUE & webversion == FALSE) {
-        save_path <- paste0(folder_location, "/", filename, "_", name_ext, ".3D.triangle_parameters.RData")
+        save_path <- file.path(folder_location, paste0(filename, "_", name_ext, ".3D.triangle_parameters.RData"))
         save(triangle.output.list, file = save_path)
         cli::cli_alert_info(paste0(" Data saved as ", folder_location,"/",filename,"_", name_ext,".3D.triangle_parameters.RData")) }
       if (plot_3D == TRUE & webversion == TRUE) {
-        save_path <- paste0(folder_location, "/", filename, "_", name_ext,".3D.triangle_parameters.RData")
+        save_path <- file.path(folder_location, paste0(filename, "_", name_ext,".3D.triangle_parameters.RData"))
         save(triangle.output.list, file = save_path)
         log_fun("For more info see the logfile", type = "info") }
       if (plot_3D == FALSE & webversion == FALSE) {
-        save_path <- paste0(folder_location, "/", filename, ".2D.triangle_parameters.RData")
+        save_path <- file.path(folder_location, paste0(filename, ".2D.triangle_parameters.RData"))
         save(triangle.output.list, file = save_path)
         cli::cli_alert_info(paste0(" Data saved as ", folder_location,"/",filename,".2D.triangle_parameters.RData"))    }
       if (plot_3D == FALSE & webversion == TRUE) {
-        save_path <- paste0(folder_location, "/", filename, ".2D.triangle_parameters.RData")
+        save_path <- file.path(folder_location, paste0(filename, ".2D.triangle_parameters.RData"))
         save(triangle.output.list, file = save_path)
         log_fun("For more info see the logfile", type = "info") }
 
@@ -1044,20 +1044,20 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
     # Open connection
     if (webversion == FALSE) {
       if (plot_3D == TRUE) {
-        con_log <- file(paste0(folder_location,"/", filename,"_", name_ext,".3D.log.txt"), open = "w")
+        con_log <- file(file.path(folder_location,paste0(filename,"_", name_ext,".3D.log.txt"), open = "w"))
         cli::cli_alert_info(paste0(" For more info see ",folder_location,"/",filename,"_", name_ext,".3D.log.txt"))
       } else {
-        con_log <- file(paste0(folder_location,"/", filename,".2D.log.txt"), open = "w")
+        con_log <- file(file.path(folder_location,paste0(filename,".2D.log.txt"), open = "w"))
         cli::cli_alert_info(paste0(" For more info see ",folder_location,"/",filename,".2D.log.txt"))
       }}
 
     if (webversion == TRUE) {
       if (plot_3D == TRUE) {
-        con_path <- paste0(folder_location,"/", filename,"_", name_ext,".3D.log.txt")
+        con_path <- file.path(folder_location,paste0(filename,"_", name_ext,".3D.log.txt"))
         con_log <- file(con_path, open = "w")
         cli::cli_alert_info(paste0(" For more info see ",con_path))
       } else {
-        con_path <- paste0(folder_location,"/", filename,".2D.log.txt")
+        con_path <- file.path(folder_location,paste0(filename,".2D.log.txt"))
         con_log <- file(con_path, open = "w")
         cli::cli_alert_info(paste0(" For more info see ",con_path))
       } }
@@ -1763,11 +1763,11 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
 
     # Open connection
     if (webversion == FALSE) {
-      con_log <- file(paste0(triangle1.folder_location,"/", triangle1.filename, ".with.",triangle2.filename,".2D.2D.log.txt"), open = "w")
+      con_log <- file(file.path(triangle1.folder_location,paste0(triangle1.filename, ".with.",triangle2.filename,".2D.2D.log.txt"), open = "w"))
       }
 
     if (webversion == TRUE) {
-        con_path <- paste0(triangle1.folder_location,"/", triangle1.filename, ".with.",triangle2.filename,".2D.2D.log.txt")
+        con_path <- file.path(triangle1.folder_location,paste0(triangle1.filename, ".with.",triangle2.filename,".2D.2D.log.txt"))
         con_log <- file(con_path, open = "w")
       }
 
@@ -1879,7 +1879,7 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
 
     cli::cli_alert_success("GDVIS calc succesfully finished!")
     if(webversion == FALSE){
-    return(paste0(triangle1.folder_location,"/",triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData"))}
+    return(file.path(triangle1.folder_location,paste0(triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData")))}
 
 
   #  return(mget(ls()))
