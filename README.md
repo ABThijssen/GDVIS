@@ -1,7 +1,7 @@
 GDVIS tutorial
 ================
 Anaïs Thijssen (<a.b.thijssen@gmail.com>)
-2025-11-16
+2025-12-03
 
 <!-- badges: start -->
 
@@ -9,7 +9,6 @@ Anaïs Thijssen (<a.b.thijssen@gmail.com>)
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/GDVIS)](https://CRAN.R-project.org/package=GDVIS)  
-[![R-CMD-check](https://github.com/ABThijssen/GDVIS/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ABThijssen/GDVIS/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ------------------------------------------------------------------------
@@ -24,7 +23,8 @@ different traits (CD mode). Note that all heritabilities need to be on
 the 50:50 case-control scale. This can be achieved by using the
 Neffective in LDSC (for more details, see the paper).
 
-Check out the preprint here: \[to be added\]  
+Check out the preprint here:
+<https://www.medrxiv.org/content/10.1101/2025.11.18.25340484v1.full.pdf+html>.
 Check out the GDVIS website here: <https://gdvis.shinyapps.io/gdvis/>.
 
 ------------------------------------------------------------------------
@@ -182,8 +182,8 @@ the legend appear outside of the triangle).
 **Plot the subtype**
 
 ``` r
-# GDVIS_plot_2D(output) This will run as well, but we will add some axes restaints 
-GDVIS_plot_2D(output, x_lower = -0.35, x_upper = 0.35, y_lower = -0.15, y_upper = 0.35)
+# GDVIS_plot(output) This will run as well, but we will add some axes restaints 
+GDVIS_plot(output, x_lower = -0.35, x_upper = 0.35, y_lower = -0.15, y_upper = 0.35)
 ```
 
 <img src="screenshot_2D.png" width="70%" style="display: block; margin: auto;" />
@@ -305,8 +305,8 @@ It is possible to just make and save the plots without rendering them
 and to make the plots without showing the labels.
 
 ``` r
-#GDVIS_plot_3D(output.3D, show.rendering = FALSE, show.names = FALSE)
-GDVIS_plot_3D(output.3D)
+#GDVIS_plot(output.3D, show.rendering = FALSE, show.names = FALSE)
+GDVIS_plot(output.3D)
 ```
 
 <img src="screenshot_3D.png" width="70%" style="display: block; margin: auto;" />
@@ -463,8 +463,8 @@ It is possible to just make and save the plots without rendering them
 and to make the plots without showing the labels.
 
 ``` r
-#GDVIS_plot_2D.2D(output.2D.2D, show.rendering = FALSE, show.names = FALSE)
-GDVIS_plot_2D_2D(output.2D.2D)
+#GDVIS_plot(output.2D.2D, show.rendering = FALSE, show.names = FALSE)
+GDVIS_plot(output.2D.2D)
 ```
 
 <img src="screenshot_2D_2D.png" width="70%" style="display: block; margin: auto;" />
@@ -520,8 +520,8 @@ and to make the plots without showing the labels.
 **Plot the subtype**
 
 ``` r
-#GDVIS_plot_CD(output.CD, show.rendering = FALSE, show.names = FALSE)
-GDVIS_plot_CD(output)
+#GDVIS_plot(output.CD, show.rendering = FALSE, show.names = FALSE)
+GDVIS_plot(output.CD)
 ```
 
 <img src="screenshot_CD.png" width="70%" style="display: block; margin: auto;" />
