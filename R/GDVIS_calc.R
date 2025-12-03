@@ -78,6 +78,8 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
 
   # Add folder_location if not in input list
   if (!"folder_location" %in% names(triangle.input.list)) {triangle.input.list$folder_location <- ""}
+  if (!"triangle1.folder_location" %in% names(triangle.input.list)) {triangle.input.list$triangle1.folder_location <- ""}
+  if (!"triangle2.folder_location" %in% names(triangle.input.list)) {triangle.input.list$triangle2.folder_location <- ""}
 
   ## Print the subgroup to the console
   if (triangle.input.list$plot_3D == TRUE & webversion == TRUE) {
@@ -900,7 +902,7 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
       internal_check_a_sub1.con_ext                                                             = internal_check_a_sub1.con_ext,
       internal_check_a_sub2.con_ext                                                             = internal_check_a_sub2.con_ext,
       a.deg_allcases.con_ext                                                                    = a.deg_allcases.con_ext,
-
+      plot_3D                                                                                   = plot_3D,
 
       # Potential updated variables
       rg_sub1.con_sub2.con_original                                                             = rg_sub1.con_sub2.con_original,
@@ -1361,8 +1363,10 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
     cli::cli_inform(paste0(" Starting 2D.2D calculations" ))
 
     # Load calculated parameters
-    parameters_triangle1 <- list.files(path = triangle1.folder_location, pattern = paste0(triangle1.plot_title, ".2D.triangle_parameters"), full.names = T)
-    parameters_triangle2 <- list.files(path = triangle2.folder_location, pattern = paste0(triangle2.plot_title, ".2D.triangle_parameters"), full.names = T)
+    if (triangle1.folder_location == "") {    parameters_triangle1 <- list.files(pattern = paste0(triangle1.plot_title, ".2D.triangle_parameters"), full.names = T) }
+    if (triangle2.folder_location == "") {    parameters_triangle2 <- list.files(pattern = paste0(triangle2.plot_title, ".2D.triangle_parameters"), full.names = T) }
+    if (triangle1.folder_location != "") {    parameters_triangle1 <- list.files(path = triangle1.folder, pattern = paste0(triangle1.plot_title, ".2D.triangle_parameters"), full.names = T) }
+    if (triangle2.folder_location != "") {    parameters_triangle2 <- list.files(path = triangle2.folder, pattern = paste0(triangle2.plot_title, ".2D.triangle_parameters"), full.names = T) }
 
     # Load the output list and immediately rename it
     load(parameters_triangle1, envir = temp_triangle_env)
@@ -1432,17 +1436,8 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
       return(test)    }
 
     test1 <- f.triangle_possible_from_rg(rg_triangle1.sub2.con_triangle2.sub1.con, rg_triangle1.sub1.con_triangle2.sub1.con, triangle1.rg_sub1.con_sub2.con)
-
     test2 <- f.triangle_possible_from_rg(rg_triangle1.sub1.con_triangle2.sub2.con, rg_triangle1.sub2.con_triangle2.sub2.con, triangle1.rg_sub1.con_sub2.con)
-
-    # length7 <- f.length_from_angle_and_lines(1, 1, rg_triangle1.sub1.con_triangle2.sub1.con)
-    # length8 <- f.length_from_angle_and_lines(1, 1, rg_triangle1.sub1.con_triangle2.sub2.con)
-    # length9 <- f.length_from_angle_and_lines(1, 1, triangle2.rg_sub1.con_sub2.con)
     test3 <- f.triangle_possible_from_rg(rg_triangle1.sub1.con_triangle2.sub1.con, rg_triangle1.sub1.con_triangle2.sub2.con, triangle2.rg_sub1.con_sub2.con)
-
-    # length10 <- f.length_from_angle_and_lines(1, 1, rg_triangle1.sub2.con_triangle2.sub1.con)
-    # length11 <- f.length_from_angle_and_lines(1, 1, rg_triangle1.sub2.con_triangle2.sub2.con)
-    # length12 <- f.length_from_angle_and_lines(1, 1, triangle2.rg_sub1.con_sub2.con)
     test4 <- f.triangle_possible_from_rg(rg_triangle1.sub2.con_triangle2.sub1.con, rg_triangle1.sub2.con_triangle2.sub2.con, triangle2.rg_sub1.con_sub2.con)
 
 
@@ -1641,6 +1636,7 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
       triangle2.a.deg_sub2.con_sub1.sub2                                             = triangle2.a.deg_sub2.con_sub1.sub2,
 
       # From 2D-2D part
+      plot_2D.2D                                                           = plot_2D.2D,
       triangle1.x.sub1                                                     = triangle1.x.sub1,
       triangle1.y.sub1                                                     = triangle1.y.sub1,
       triangle1.z.sub1                                                     = triangle1.z.sub1,
@@ -1764,7 +1760,6 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
     to_logfile_output_triangle2D.2D <- c("triangle1.coordinates_sub1", "triangle1.coordinates_sub2", "triangle1.coordinates_allcases", "triangle1.coordinates_con", "triangle1.coordinates_popmean",
                                          "triangle2.coordinates_sub1", "triangle2.coordinates_sub2", "triangle2.coordinates_allcases", "triangle2.coordinates_con", "triangle2.coordinates_popmean",
                                          "a.deg_rsub1.rsub2_sub1.sub2", "a.deg_rsub1.con_sub1.con", "a.deg_rsub1.con_sub2.con", "a.deg_rsub2.con_sub1.con", "a.deg_rsub2.con_sub2.con")
-
 
     # Open connection
     if (webversion == FALSE) {
@@ -1892,8 +1887,10 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
 
     ### Save ----------------
 
+
     if (save_data) {
-          save(double.triangle.output.list, file = file.path(triangle1.folder_location, paste0(triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData")))
+      save_path <-  file.path(triangle1.folder_location, paste0(triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData")) %>% gsub("^/", "", .)
+          save(double.triangle.output.list, file = save_path)
           cli::cli_alert_info(file.path(" Data saved as ", triangle1.folder_location, paste0(triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData")))
     }
 
@@ -1909,7 +1906,7 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
 
     cli::cli_alert_success("GDVIS calc 2D.2D succesfully finished!")
     if(webversion == FALSE & plot_2D.2D == TRUE){
-      return(file.path(triangle1.folder_location,paste0(triangle1.filename, ".with.",triangle2.filename,".2D_2D.triangle_parameters.RData")))}
+      return(save_path)}
 
 
     } # End if 2D.2D = T
@@ -2169,7 +2166,8 @@ GDVIS_calc <- function(triangle.input.list, log_fun = message, webversion = FALS
         a.deg_trait1.cases_trait2.cases_vs_trait1.cases_trait3.cases = a.deg_trait1.cases_trait2.cases_vs_trait1.cases_trait3.cases,
         a.deg_trait1.cases_trait2.cases_vs_trait2.cases_trait3.cases = a.deg_trait1.cases_trait2.cases_vs_trait2.cases_trait3.cases,
         a.deg_trait1.cases_trait3.cases_vs_trait2.cases_trait3.cases = a.deg_trait1.cases_trait3.cases_vs_trait2.cases_trait3.cases,
-        folder_location                                         = folder_location
+        folder_location                                         = folder_location,
+        plot_CD                                                 = plot_CD
 
       )
 

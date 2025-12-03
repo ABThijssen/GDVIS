@@ -143,7 +143,7 @@ add_arrowhead <- function(fig, dirvect, midpoint,color) {
 
 
 # Initialize a 3D scatter plot
-fig <- plot_ly() %>%
+fig <- plotly::plot_ly() %>%
 
   # trait1 line
   plotly::add_trace(x = c(x.trait1.con, x.trait1), y = c(y.trait1.con, y.trait1), z = c(z.trait1.con, z.trait1),
@@ -270,7 +270,7 @@ fig <- plot_ly() %>%
             hoverinfo = 'none') %>%
 
   # Clean up plot
-  layout(scene = list(
+  plotly::layout(scene = list(
     xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE, showspikes = FALSE, title = ''),
     yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE, showspikes = FALSE, title = ''),
     zaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE, showspikes = FALSE, title = ''),
@@ -307,7 +307,8 @@ fig <- add_arrowhead(fig, dir.vect_trait3_line, coord_arrow.trait3_line, color =
 
 if (webversion == FALSE) {
   # Save
-  htmlwidgets::saveWidget(fig, paste0(folder_location, "/", name_trait1, "_",name_trait2,"_" ,name_trait3, "_CD.plot.html"))
+  save_path <- paste0(folder_location, "/", name_trait1, "_",name_trait2,"_" ,name_trait3, "_CD.plot.html") %>% gsub("^/", "", .)
+  htmlwidgets::saveWidget(fig, save_path)
 
   # Return message
   cli::cli_alert_info(paste0(" Plot saved as ", folder_location,"/",name_trait1, "_",name_trait2,"_" ,name_trait3, "_CD.plot.html"))
@@ -400,31 +401,34 @@ if (show.rendering == TRUE & webversion == FALSE) {  cli::cli_alert_info("Showin
 if (webversion == FALSE) {
 # Define UI for the shiny app
 ui <- shiny::fluidPage(fluidRow(
-  shiny::column(8, plotlyOutput("plotly_plot", height = "600px")),   # 8/12 width for the plotly plot
-  shiny::column(4, plotOutput("ggplot_legend", height = "600px"))))    # 4/12 width for the ggplot legend
+  shiny::column(8, plotly::plotlyOutput("plotly_plot", height = "600px")),   # 8/12 width for the plotly plot
+  shiny::column(4, shiny::plotOutput("ggplot_legend", height = "600px"))))    # 4/12 width for the ggplot legend
 
 # Define server logic for the shiny app
 server <- function(input, output, session) {
 
   # Render the plotly plot (fig)
-  output$plotly_plot <- renderPlotly({  fig  })
+  output$plotly_plot <- plotly::renderPlotly({  fig  })
 
   # Render the ggplot legend
-  output$ggplot_legend <-  suppressWarnings({ renderPlot({  legend  })   })  }
+  output$ggplot_legend <-  suppressWarnings({ shiny::renderPlot({  legend  })   })  }
 
 # Run the shiny application
-shiny_app <- shinyApp(ui = ui, server = server)
+shiny_app <- shiny::shinyApp(ui = ui, server = server)
 
 # Remove the folder if it already already exists (shiny doesn't overwrite)
 save_path <- paste0(folder_location, "/",name_trait1, "_",name_trait2,"_" ,name_trait3, "_CD.plot_files")
 if (dir.exists(save_path)) { unlink(save_path, recursive = T)   }
 
 # Save the Shiny app script as a .R file
-saveRDS(shiny_app, file = paste0(folder_location, "/", name_trait1, "_",name_trait2,"_" ,name_trait3, "_shiny_app.rds"))
+save_path_shiny <- paste0(folder_location, "/", name_trait1, "_",name_trait2,"_" ,name_trait3, "_shiny_app.rds") %>% gsub("^/", "", .)
+saveRDS(shiny_app, file = save_path_shiny)
 
 # Save the UI and server components separately
-saveRDS(ui, file = paste0(folder_location, "/", name_trait1, "_",name_trait2,"_" ,name_trait3, "_ui.rds"))
-saveRDS(server, file = paste0(folder_location, "/", name_trait1, "_",name_trait2,"_" ,name_trait3, "_server.rds"))
+save_path_ui <- paste0(folder_location, "/", name_trait1, "_",name_trait2,"_" ,name_trait3, "_ui.rds") %>% gsub("^/", "", .)
+saveRDS(ui, file = save_path_ui)
+save_path_server <- paste0(folder_location, "/", name_trait1, "_",name_trait2,"_" ,name_trait3, "_server.rds")  %>% gsub("^/", "", .)
+saveRDS(server, file = save_path_server)
 
 # Show if asked
 if (show.rendering == TRUE) { assign("shiny_app", shiny_app, envir = .GlobalEnv); shiny::runApp(get("shiny_app", envir = .GlobalEnv)) }}

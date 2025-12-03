@@ -7,7 +7,7 @@
 #' @param webversion needs to stay on FALSE
 #' @export
 # Function to plot 2D_2D triangles
-GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, webversion = FALSE) {
+GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, webversion = FALSE, show.names = TRUE) {
 
 
 
@@ -271,9 +271,11 @@ GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, w
                 type = 'scatter3d', mode = 'markers',
                 marker = list(size = 6, color = 'darkgray', line = list(color = "black", width = 3), symbol = "circle"),
                 showlegend = FALSE,
-                hoverinfo = 'none') %>%
+                hoverinfo = 'none')
 
       # Add text annotations
+    if (show.names == TRUE) {
+      fig <- fig %>%
       plotly::add_trace(x = c(triangle1.x.sub1, triangle1.x.sub2, triangle1.x.con, triangle2.x.sub1, triangle2.x.sub2, triangle2.x.con),
                 y = c(triangle1.y.sub1, triangle1.y.sub2, triangle1.y.con, triangle2.y.sub1, triangle2.y.sub2, triangle2.y.con),
                 z = c(triangle1.z.sub1, triangle1.z.sub2, triangle1.z.con, triangle2.z.sub1, triangle2.z.sub2, triangle2.z.con),
@@ -282,10 +284,11 @@ GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, w
                 textposition = c("bottom right", "bottom right", "bottom right","bottom right", "bottom right", "bottom right"),
                 textfont = list(size = 12),
                 showlegend = FALSE,
-                hoverinfo = 'none') %>%
+                hoverinfo = 'none') }
 
       # Make the bottom triangle gray
-      plotly::add_trace(x = c(triangle1.x.sub1, triangle1.x.sub2, triangle1.x.con),
+    fig <- fig %>%
+    plotly::add_trace(x = c(triangle1.x.sub1, triangle1.x.sub2, triangle1.x.con),
                 y = c(triangle1.y.sub1, triangle1.y.sub2, triangle1.y.con),
                 z = c(triangle1.z.sub1, triangle1.z.sub2, triangle1.z.con),
                 type = 'mesh3d',
@@ -546,7 +549,7 @@ GDVIS_plot_2D_2D <- function(input_triangle_parameters, show.rendering = TRUE, w
     # Save the UI and server components separately
     ui_save_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_ui.rds")) %>% gsub("^/", "", .)
     saveRDS(ui, file = ui_save_path)
-    server_save_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_server.rds"))
+    server_save_path <- file.path(triangle1.folder_location, paste0(triangle1.filename, ".vs.", triangle2.filename, ".double_triangles_server.rds")) %>% gsub("^/", "", .)
     saveRDS(server, file = server_save_path)
 
     # Show if asked, otherwise print that the plots are saved
