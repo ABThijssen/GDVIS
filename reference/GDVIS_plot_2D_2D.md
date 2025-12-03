@@ -8,7 +8,8 @@ This function plots a GDVIS visualization based on GDVIS parameters.
 GDVIS_plot_2D_2D(
   input_triangle_parameters,
   show.rendering = TRUE,
-  webversion = FALSE
+  webversion = FALSE,
+  show.names = TRUE
 )
 ```
 
@@ -27,3 +28,7 @@ GDVIS_plot_2D_2D(
 - webversion:
 
   needs to stay on FALSE
+
+- show.names:
+
+  option to show the names of the groups, default is true

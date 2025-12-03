@@ -4,6 +4,8 @@
 
 - [`GDVIS_calc()`](https://abthijssen.github.io/GDVIS/reference/GDVIS_calc.md)
   : Calculate GDVIS parameters
+- [`GDVIS_plot()`](https://abthijssen.github.io/GDVIS/reference/GDVIS_plot.md)
+  : Plot GDVIS plot
 - [`GDVIS_plot_2D()`](https://abthijssen.github.io/GDVIS/reference/GDVIS_plot_2D.md)
   : Plot GDVIS 2D plot
 - [`GDVIS_plot_2D_2D()`](https://abthijssen.github.io/GDVIS/reference/GDVIS_plot_2D_2D.md)
