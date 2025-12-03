@@ -337,22 +337,22 @@ legend <- ggplot() +
   # Plot angles with degrees
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.125, 0.095)), color = "#00B050", linewidth = 2) +
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.125, 0.175)), color = "#ED7D31", linewidth = 2) +
-  geom_text(ggplot2::aes(x = 0.3, y = 0.14), label = paste0(rg_trait1.cases_trait2.cases_vs_trait1.cases_trait3.cases, " (", a.deg_trait1.cases_trait2.cases_vs_trait1.cases_trait3.cases, "°)"), color = "black", hjust = 0, size = 6) +
+  geom_text(ggplot2::aes(x = 0.3, y = 0.14), label = paste0(rg_trait1.cases_trait2.cases_vs_trait1.cases_trait3.cases, " (", a.deg_trait1.cases_trait2.cases_vs_trait1.cases_trait3.cases, "\u00B0)"), color = "black", hjust = 0, size = 6) +
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.26, 0.23)), color = "#7030A0", linewidth = 2) +
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.26, 0.31)), color = "#ED7D31", linewidth = 2) +
-  geom_text(ggplot2::aes(x = 0.3, y = 0.27), label = paste0(rg_trait1.cases_trait2.cases_vs_trait2.cases_trait3.cases, " (", a.deg_trait1.cases_trait2.cases_vs_trait2.cases_trait3.cases, "°)"), color = "black", hjust = 0, size = 6) +
+  geom_text(ggplot2::aes(x = 0.3, y = 0.27), label = paste0(rg_trait1.cases_trait2.cases_vs_trait2.cases_trait3.cases, " (", a.deg_trait1.cases_trait2.cases_vs_trait2.cases_trait3.cases, "\u00B0)"), color = "black", hjust = 0, size = 6) +
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.385, 0.355)), color = "#7030A0", linewidth = 2) +
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.385, 0.435)), color = "#00B050", linewidth = 2) +
-  geom_text(ggplot2::aes(x = 0.3, y = 0.395), label = paste0(rg_trait1.cases_trait3.cases_vs_trait2.cases_trait3.cases, " (", a.deg_trait1.cases_trait3.cases_vs_trait2.cases_trait3.cases, "°)"), color = "black", hjust = 0, size = 6) +
+  geom_text(ggplot2::aes(x = 0.3, y = 0.395), label = paste0(rg_trait1.cases_trait3.cases_vs_trait2.cases_trait3.cases, " (", a.deg_trait1.cases_trait3.cases_vs_trait2.cases_trait3.cases, "\u00B0)"), color = "black", hjust = 0, size = 6) +
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.51, 0.48)), color = "#083F80", linewidth = 2) +
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.51, 0.56)), color = "#3696D2", linewidth = 2) +
-  geom_text(ggplot2::aes(x = 0.3, y = 0.52), label = paste0(rg_trait1_trait2, " (", a.deg_trait1_trait2, "°)"), color = "black", hjust = 0, size = 6) +
+  geom_text(ggplot2::aes(x = 0.3, y = 0.52), label = paste0(rg_trait1_trait2, " (", a.deg_trait1_trait2, "\u00B0)"), color = "black", hjust = 0, size = 6) +
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.635, 0.605)), color = "#083F80", linewidth = 2) +
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.635, 0.685)), color = "#B4D8F0", linewidth = 2) +
-  geom_text(ggplot2::aes(x = 0.3, y = 0.645), label = paste0(rg_trait1_trait3, " (", a.deg_trait1_trait3, "°)"), color = "black", hjust = 0, size = 6) +
+  geom_text(ggplot2::aes(x = 0.3, y = 0.645), label = paste0(rg_trait1_trait3, " (", a.deg_trait1_trait3, "\u00B0)"), color = "black", hjust = 0, size = 6) +
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.765, 0.735)), color = "#B4D8F0", linewidth = 2) +
   geom_line(ggplot2::aes(x = c(0.1, 0.25), y = c(0.765, 0.815)), color = "#3696D2", linewidth = 2) +
-  geom_text(ggplot2::aes(x = 0.3, y = 0.775), label = paste0(rg_trait2_trait3, " (", a.deg_trait2_trait3, "°)"), color = "black", hjust = 0, size = 6) +
+  geom_text(ggplot2::aes(x = 0.3, y = 0.775), label = paste0(rg_trait2_trait3, " (", a.deg_trait2_trait3, "\u00B0)"), color = "black", hjust = 0, size = 6) +
   annotate("text", x = 0, y = 0.925, label = "italic(r)[g] ~ '(degrees)'", color = "black", hjust = 0, size = 6.5, parse = TRUE) +
 
 

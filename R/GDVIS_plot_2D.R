@@ -128,9 +128,9 @@ GDVIS_plot_2D <- function(input_triangle_parameters, x_lower = NULL, x_upper = N
       ggplot2::geom_point(ggplot2::aes(x = x, y = y, fill = label_color), size = 2.5, shape = 21, color = "black", data = data_angle) +
       ggplot2::scale_fill_manual(name = expression(italic(r)[g]~"(degrees)"),
                         values = c("name_con" = "black", "name_sub1" = "white",  name_sub2 = "darkgray"),
-                        labels = c("name_con" = paste0(rg_sub1.con_sub2.con, " (", a.deg_sub1.con_sub2.con, "°)"),
-                                   "name_sub1" = paste0(rg_sub1.con_sub1.sub2, " (", a.deg_sub1.con_sub1.sub2, "°)"),
-                                   "name_sub2" = paste0(rg_sub2.con_sub1.sub2," (", a.deg_sub2.con_sub1.sub2, "°)"))) +
+                        labels = c("name_con" = paste0(rg_sub1.con_sub2.con, " (", a.deg_sub1.con_sub2.con, "\u00B0)"),
+                                   "name_sub1" = paste0(rg_sub1.con_sub1.sub2, " (", a.deg_sub1.con_sub1.sub2, "\u00B0)"),
+                                   "name_sub2" = paste0(rg_sub2.con_sub1.sub2," (", a.deg_sub2.con_sub1.sub2, "\u00B0)"))) +
       ggplot2::geom_text(data = data_angle,
                 ggplot2::aes(x = x, y = y, label = label, vjust = vjust, hjust = hjust),
                 nudge_x = data_angle$nudge_x, nudge_y = data_angle$nudge_y) +
@@ -182,10 +182,11 @@ GDVIS_plot_2D <- function(input_triangle_parameters, x_lower = NULL, x_upper = N
         plot <- plot + ggplot2::scale_y_continuous(limits = c(y_lower, y_upper))  }
 
       # Save plot
-      ggplot2::ggsave(plot, file = paste0(folder_location,"/",filename, "_2D.triangle_plot.png"), height = 6, width = 12)
+      save_path <- paste0(folder_location,"/",filename, "_2D.triangle_plot.png")  %>% gsub("^/", "", .)
+      ggplot2::ggsave(plot, file = save_path, height = 6, width = 12)
 
       # Return message
-      cli::cli_alert_info(paste0(" Plot saved as ", folder_location,"/",filename,"_2D.triangle_plot.png"))
+      cli::cli_alert_info(paste0(" Plot saved as ", save_path))
       cli::cli_alert_success("GDVIS plot succesfully finished")
 
       # Return the plot object

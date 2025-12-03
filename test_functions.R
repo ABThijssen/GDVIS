@@ -1,8 +1,4 @@
-source("R/GDVIS_calc.R")
-source("R/GDVIS_plot.R")
-source("R/GDVIS_plot_2D.R")
-source("R/GDVIS_plot_3D.R")
-source("R/GDVIS_plot_2D_2D.R")
+
 
 
 ## 2D -------------------------------------------------------------------
@@ -38,9 +34,9 @@ input.list <- list(
   optional_LDSC_h2_allcases.con                 = 0.0915,
   optional_LDSC_h2_se_allcases.con              = 0.0079)
 
-output <- GDVIS_calc(input.list)
-GDVIS_plot(output, x_lower = -0.35, x_upper = 0.35, y_lower = -0.15, y_upper = 0.35)
-GDVIS_plot(output)
+output <- GDVIS::GDVIS_calc(input.list)
+GDVIS::GDVIS_plot(output, x_lower = -0.35, x_upper = 0.35, y_lower = -0.15, y_upper = 0.35)
+GDVIS::GDVIS_plot_2D(output)
 
 
 ## 3D -------------------------------------------------------------------

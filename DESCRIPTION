@@ -14,9 +14,10 @@ Imports:
   shiny,
   magrittr,
   dplyr,
+  tidyr,
   tibble,
   grid,
   stringr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 URL: https://abthijssen.github.io/GDVIS/

@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 connect_to_github.R
+test_functions.R
 docs

@@ -2,6 +2,7 @@
 
 export("%>%")
 export(GDVIS_calc)
+export(GDVIS_plot)
 export(GDVIS_plot_2D)
 export(GDVIS_plot_2D_2D)
 export(GDVIS_plot_3D)

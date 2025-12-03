@@ -7,7 +7,8 @@
 GDVIS_plot_2D_2D(
   input_triangle_parameters,
   show.rendering = TRUE,
-  webversion = FALSE
+  webversion = FALSE,
+  show.names = TRUE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ GDVIS_plot_2D_2D(
 \item{show.rendering}{option to show the rendering of the plot in an external window, default is TRUE}
 
 \item{webversion}{needs to stay on FALSE}
+
+\item{show.names}{option to show the names of the groups, default is true}
 }
 \description{
 This function plots a GDVIS visualization based on GDVIS parameters.
