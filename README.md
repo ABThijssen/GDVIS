@@ -8,7 +8,8 @@ Anaïs Thijssen (<a.b.thijssen@gmail.com>)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/GDVIS)](https://CRAN.R-project.org/package=GDVIS)  
+status](https://www.r-pkg.org/badges/version/GDVIS)](https://CRAN.R-project.org/package=GDVIS)
+[![R-CMD-check](https://github.com/stefanvermeent/projectlog/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ABthijssen/GDVIS/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ------------------------------------------------------------------------
@@ -24,8 +25,8 @@ the 50:50 case-control scale. This can be achieved by using the
 Neffective in LDSC (for more details, see the paper).
 
 Check out the preprint here:
-<https://www.medrxiv.org/content/10.1101/2025.11.18.25340484v1.full.pdf+html>.
-Check out the GDVIS website here: <https://gdvis.shinyapps.io/gdvis/>.
+<https://doi.org/10.1101/2025.11.18.25340484><br> Check out the GDVIS
+website here: <https://gdvis.shinyapps.io/gdvis/>
 
 ------------------------------------------------------------------------
 
