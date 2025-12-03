@@ -1,6 +1,6 @@
 # GDVIS tutorial
 
-Anaïs Thijssen (<a.b.thijssen@gmail.com>) 2025-11-16
+Anaïs Thijssen (<a.b.thijssen@gmail.com>) 2025-12-03
 
 ------------------------------------------------------------------------
 
@@ -14,7 +14,8 @@ different traits (CD mode). Note that all heritabilities need to be on
 the 50:50 case-control scale. This can be achieved by using the
 Neffective in LDSC (for more details, see the paper).
 
-Check out the preprint here: \[to be added\]  
+Check out the preprint here:
+<https://www.medrxiv.org/content/10.1101/2025.11.18.25340484v1.full.pdf+html>.
 Check out the GDVIS website here: <https://gdvis.shinyapps.io/gdvis/>.
 
 ------------------------------------------------------------------------
@@ -172,8 +173,8 @@ the legend appear outside of the triangle).
 **Plot the subtype**
 
 ``` r
-# GDVIS_plot_2D(output) This will run as well, but we will add some axes restaints 
-GDVIS_plot_2D(output, x_lower = -0.35, x_upper = 0.35, y_lower = -0.15, y_upper = 0.35)
+# GDVIS_plot(output) This will run as well, but we will add some axes restaints 
+GDVIS_plot(output, x_lower = -0.35, x_upper = 0.35, y_lower = -0.15, y_upper = 0.35)
 ```
 
 ![](screenshot_2D.png)
@@ -295,8 +296,8 @@ It is possible to just make and save the plots without rendering them
 and to make the plots without showing the labels.
 
 ``` r
-#GDVIS_plot_3D(output.3D, show.rendering = FALSE, show.names = FALSE)
-GDVIS_plot_3D(output.3D)
+#GDVIS_plot(output.3D, show.rendering = FALSE, show.names = FALSE)
+GDVIS_plot(output.3D)
 ```
 
 ![](screenshot_3D.png)
@@ -453,8 +454,8 @@ It is possible to just make and save the plots without rendering them
 and to make the plots without showing the labels.
 
 ``` r
-#GDVIS_plot_2D.2D(output.2D.2D, show.rendering = FALSE, show.names = FALSE)
-GDVIS_plot_2D_2D(output.2D.2D)
+#GDVIS_plot(output.2D.2D, show.rendering = FALSE, show.names = FALSE)
+GDVIS_plot(output.2D.2D)
 ```
 
 ![](screenshot_2D_2D.png)
@@ -510,8 +511,8 @@ and to make the plots without showing the labels.
 **Plot the subtype**
 
 ``` r
-#GDVIS_plot_CD(output.CD, show.rendering = FALSE, show.names = FALSE)
-GDVIS_plot_CD(output)
+#GDVIS_plot(output.CD, show.rendering = FALSE, show.names = FALSE)
+GDVIS_plot(output.CD)
 ```
 
 ![](screenshot_CD.png)

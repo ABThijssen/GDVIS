@@ -47,7 +47,7 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="gdvis-tutorial">GDVIS tutorial<a class="anchor" aria-label="anchor" href="#gdvis-tutorial"></a>
 </h1></div>
-<p>Anaïs Thijssen (<a href="mailto:a.b.thijssen@gmail.com" class="email">a.b.thijssen@gmail.com</a>) 2025-11-16</p>
+<p>Anaïs Thijssen (<a href="mailto:a.b.thijssen@gmail.com" class="email">a.b.thijssen@gmail.com</a>) 2025-12-03</p>
 <!-- badges: start -->
 
 <hr>
@@ -56,8 +56,7 @@
 <h1 id="welcome-to-this-gdvis-tutorial">Welcome to this GDVIS tutorial<a class="anchor" aria-label="anchor" href="#welcome-to-this-gdvis-tutorial"></a>
 </h1>
 <p><strong>GDVIS (Genetic Distance Visualization)</strong> is an R package that allows you to compute and visualize genetic distances between subtypes of a disorder (2D mode), between a subtype and an external trait (3D mode), between two different subtype definitions (2D_2D mode) and between three different traits (CD mode). Note that all heritabilities need to be on the 50:50 case-control scale. This can be achieved by using the Neffective in LDSC (for more details, see the paper).</p>
-<p>Check out the preprint here: [to be added]<br>
-Check out the GDVIS website here: <a href="https://gdvis.shinyapps.io/gdvis/" class="external-link uri">https://gdvis.shinyapps.io/gdvis/</a>.</p>
+<p>Check out the preprint here: <a href="https://www.medrxiv.org/content/10.1101/2025.11.18.25340484v1.full.pdf+html" class="external-link uri">https://www.medrxiv.org/content/10.1101/2025.11.18.25340484v1.full.pdf+html</a>. Check out the GDVIS website here: <a href="https://gdvis.shinyapps.io/gdvis/" class="external-link uri">https://gdvis.shinyapps.io/gdvis/</a>.</p>
 <hr>
 </div>
 <div class="section level1">
@@ -201,8 +200,8 @@ GDVIS_plot_2D takes as input the output generated from GDVIS_calc.<br>
 Note that the h2 and rg values in the legend are the GDVIS estimated values and not the optional LDSC values. Note that you can manually set the axes limits (this is especially nice if you have multiple triangles and want to make sure the axes are similar, it can also help with making the legend appear outside of the triangle).</p>
 <p><strong>Plot the subtype</strong></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># GDVIS_plot_2D(output) This will run as well, but we will add some axes restaints </span></span>
-<span><span class="fu"><a href="reference/GDVIS_plot_2D.html">GDVIS_plot_2D</a></span><span class="op">(</span><span class="va">output</span>, x_lower <span class="op">=</span> <span class="op">-</span><span class="fl">0.35</span>, x_upper <span class="op">=</span> <span class="fl">0.35</span>, y_lower <span class="op">=</span> <span class="op">-</span><span class="fl">0.15</span>, y_upper <span class="op">=</span> <span class="fl">0.35</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># GDVIS_plot(output) This will run as well, but we will add some axes restaints </span></span>
+<span><span class="fu"><a href="reference/GDVIS_plot.html">GDVIS_plot</a></span><span class="op">(</span><span class="va">output</span>, x_lower <span class="op">=</span> <span class="op">-</span><span class="fl">0.35</span>, x_upper <span class="op">=</span> <span class="fl">0.35</span>, y_lower <span class="op">=</span> <span class="op">-</span><span class="fl">0.15</span>, y_upper <span class="op">=</span> <span class="fl">0.35</span><span class="op">)</span></span></code></pre></div>
 <p><img src="screenshot_2D.png" width="70%" style="display: block; margin: auto;"></p>
 <hr>
 </div>
@@ -311,8 +310,8 @@ This RMarkdown file cannot handle interactive shiny output, for an example of th
 The plot below is a screenshot of the 3D interactive visualization.<br>
 It is possible to just make and save the plots without rendering them and to make the plots without showing the labels.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#GDVIS_plot_3D(output.3D, show.rendering = FALSE, show.names = FALSE)</span></span>
-<span><span class="fu"><a href="reference/GDVIS_plot_3D.html">GDVIS_plot_3D</a></span><span class="op">(</span><span class="va">output.3D</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#GDVIS_plot(output.3D, show.rendering = FALSE, show.names = FALSE)</span></span>
+<span><span class="fu"><a href="reference/GDVIS_plot.html">GDVIS_plot</a></span><span class="op">(</span><span class="va">output.3D</span><span class="op">)</span></span></code></pre></div>
 <p><img src="screenshot_3D.png" width="70%" style="display: block; margin: auto;"></p>
 <hr>
 </div>
@@ -451,8 +450,8 @@ This RMarkdown file cannot handle interactive shiny output, for an example of th
 The plot below is a screenshot of the 3D interactive visualization.<br>
 It is possible to just make and save the plots without rendering them and to make the plots without showing the labels.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#GDVIS_plot_2D.2D(output.2D.2D, show.rendering = FALSE, show.names = FALSE)</span></span>
-<span><span class="fu"><a href="reference/GDVIS_plot_2D_2D.html">GDVIS_plot_2D_2D</a></span><span class="op">(</span><span class="va">output.2D.2D</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#GDVIS_plot(output.2D.2D, show.rendering = FALSE, show.names = FALSE)</span></span>
+<span><span class="fu"><a href="reference/GDVIS_plot.html">GDVIS_plot</a></span><span class="op">(</span><span class="va">output.2D.2D</span><span class="op">)</span></span></code></pre></div>
 <p><img src="screenshot_2D_2D.png" width="70%" style="display: block; margin: auto;"></p>
 <hr>
 </div>
@@ -490,8 +489,8 @@ The plot below is a screenshot of the 3D interactive visualization.<br>
 It is possible to just make and save the plots without rendering them and to make the plots without showing the labels.</p>
 <p><strong>Plot the subtype</strong></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#GDVIS_plot_CD(output.CD, show.rendering = FALSE, show.names = FALSE)</span></span>
-<span><span class="fu"><a href="reference/GDVIS_plot_CD.html">GDVIS_plot_CD</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#GDVIS_plot(output.CD, show.rendering = FALSE, show.names = FALSE)</span></span>
+<span><span class="fu"><a href="reference/GDVIS_plot.html">GDVIS_plot</a></span><span class="op">(</span><span class="va">output.CD</span><span class="op">)</span></span></code></pre></div>
 <p><img src="screenshot_CD.png" width="70%" style="display: block; margin: auto;"></p>
 </div>
 
@@ -523,7 +522,6 @@ It is possible to just make and save the plots without rendering them and to mak
 <ul class="list-unstyled">
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 <li><a href="https://CRAN.R-project.org/package=GDVIS" class="external-link"><img src="https://www.r-pkg.org/badges/version/GDVIS" alt="CRAN status"></a></li>
-<li><a href="https://github.com/ABThijssen/GDVIS/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ABThijssen/GDVIS/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 
