@@ -249,7 +249,7 @@ GDVIS_plot_3D <- function(input_triangle_parameters, show.rendering = TRUE, show
        fig <- fig %>%
        # Add popmean
          plotly::add_trace(x = x.popmean, y = y.popmean, z = z.popmean,
-                          plotly = 'scatter3d', mode = 'markers',
+                          type = 'scatter3d', mode = 'markers',
           marker = list(size = 5, color = 'black', symbol = "cross"),
           showlegend = FALSE,
           hoverinfo = 'none') %>%

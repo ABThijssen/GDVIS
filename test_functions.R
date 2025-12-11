@@ -1,5 +1,4 @@
-
-
+devtools::load_all()
 
 ## 2D -------------------------------------------------------------------
 
@@ -209,4 +208,4 @@ input.list.CD <- list(
   pop.prev_trait3                               = 0.16)
 
 output.CD <- GDVIS_calc(input.list.CD)
-GDVIS_plot_CD(output.CD, show.names = F)
+GDVIS_plot(output.CD, show.names = F)

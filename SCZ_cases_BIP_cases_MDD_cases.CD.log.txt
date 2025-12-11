@@ -1,0 +1,61 @@
+............................................................
+.   GDVIS software created by: A.B. Thijssen               .
+.   Log file created on: 2025-12-11 11:30:46               .
+.   GDVIS mode used: cross-disorder                    .
+............................................................
+    
+    
+    
+Note that no significance checks are done, make sure to only visualize sensible data.
+    
+    
+Required input data
+------------------------------------------------------------
+name_trait1                                   SCZ_cases
+name_trait2                                   BIP_cases
+name_trait3                                   MDD_cases
+name_trait1.con                               SCZ_con
+name_trait2.con                               BIP_con
+name_trait3.con                               MDD_con
+rg_trait1_trait2                              0.6986
+rg_trait1_trait3                              0.3598
+rg_trait2_trait3                              0.4758
+h2_trait1                                     0.4118
+h2_trait2                                     0.2902
+h2_trait3                                     0.0703
+pop.prev_trait1                               0.004
+pop.prev_trait2                               0.01
+pop.prev_trait3                               0.16
+folder_location                               
+    
+Calculated output data
+------------------------------------------------------------
+a.rad_trait1_trait2                           0.797
+a.deg_trait1_trait2                           45.685
+a.rad_trait1_trait3                           1.203
+a.deg_trait1_trait3                           68.912
+a.rad_trait2_trait3                           1.075
+a.deg_trait2_trait3                           61.589
+d_trait1.total                                0.642
+d_trait2.total                                0.539
+d_trait3.total                                0.265
+d_trait1_popmean                              0.639
+d_trait2_popmean                              0.533
+d_trait3_popmean                              0.223
+d_trait1.con_popmean                          0.003
+d_trait2.con_popmean                          0.005
+d_trait3.con_popmean                          0.042
+d_trait1.trait2                               0.465
+h2_trait1.trait2                              0.217
+d_trait1.trait3                               0.596
+h2_trait1.trait3                              0.356
+d_trait2.trait3                               0.47
+h2_trait2.trait3                              0.221
+h2_trait1.cases_trait2.cases                  0.217
+h2_trait1.cases_trait3.cases                  0.356
+h2_trait2.cases_trait3.cases                  0.221
+rg_trait1.cases_trait2.cases_vs_trait1.cases_trait3.cases 0.633
+rg_trait1.cases_trait2.cases_vs_trait2.cases_trait3.cases -0.187
+rg_trait1.cases_trait3.cases_vs_trait2.cases_trait3.cases 0.642
+    
+    

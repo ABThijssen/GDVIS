@@ -1,0 +1,140 @@
+............................................................
+.   GDVIS software created by: A.B. Thijssen               .
+.   Log file created on: 2025-12-11 11:19:40               .
+.   GDVIS mode used: 2D                                    .
+............................................................
+    
+    
+    
+Required input data
+------------------------------------------------------------
+h2_sub1.con                                   0.1394
+h2_se_sub1.con                                0.0147
+h2_sub2.con                                   0.0798
+h2_se_sub2.con                                0.0098
+rg_sub1.con_sub2.con                          0.8451
+rg_se_sub1.con_sub2.con                       0.072
+name_sub1                                     With anxiety
+N_sub1                                        11885
+name_sub2                                     without anxiety
+N_sub2                                        18546
+name_allcases                                 all MDD cases
+name_con                                      MDD controls
+plot_title                                    Comorbid anxiety
+folder_location                               
+filename                                      Comorbid anxiety
+pop.prev_case                                 0.16
+    
+    
+Optional input data
+------------------------------------------------------------
+optional_LDSC_h2_sub1.sub2                    0.045
+optional_LDSC_h2_se_sub1.sub2                 0.0166
+optional_LDSC_h2_allcases.con                 NA
+optional_LDSC_h2_se_allcases.con              NA
+optional_LDSC_rg_sub1.con_sub1.sub2           0.6503
+optional_LDSC_rg_se_sub1.con_sub1.sub2        0.0752
+optional_LDSC_rg_sub2.con_sub1.sub2           0.1302
+optional_LDSC_rg_se_sub2.con_sub1.sub2        0.187
+optional_LDSC_rg_allcases.con_sub1.con        0.9504
+optional_LDSC_rg_se_allcases.con_sub1.con     0.0235
+optional_LDSC_rg_allcases.con_sub2.con        0.9686
+optional_LDSC_rg_se_allcases.con_sub2.con     0.0153
+    
+    
+Calculated output data
+------------------------------------------------------------
+h2_sub1.sub2                                  0.041
+h2_allcases.con                               0.093
+rg_sub1.con_sub1.sub2                         0.665
+rg_sub2.con_sub1.sub2                         0.163
+rg_allcases.con_sub1.con                      0.954
+rg_allcases.con_sub2.con                      0.967
+d_sub1.con                                    0.373
+d_sub2.con                                    0.282
+d_sub1.sub2                                   0.202
+d_allcases.con                                0.306
+d_allcases.sub1                               0.123
+d_allcases.sub2                               0.079
+a.rad_sub1.con_sub2.con                       0.564
+a.deg_sub1.con_sub2.con                       32.317
+a.rad_sub1.con_sub1.sub2                      0.843
+a.deg_sub1.con_sub1.sub2                      48.284
+a.rad_sub2.con_sub1.sub2                      1.407
+a.deg_sub2.con_sub1.sub2                      80.601
+a.rad_allcases.con_sub1.con                   0.306
+a.deg_allcases.con_sub1.con                   17.534
+a.rad_allcases.con_sub2.con                   0.258
+a.deg_allcases.con_sub2.con                   14.784
+coordinates_con                               (0,-0.049,0)
+coordinates_sub1                              (-0.112,0.307,0)
+coordinates_sub2                              (0.072,0.224,0)
+coordinates_allcases                          (0,0.257,0)
+coordinates_popmean                           (0,0,0)
+    
+    
+Check whether subgroups are genetically different
+------------------------------------------------------------
+When there is no suggested evidence of significant difference between subgroups, the triangle will not be plotted. Specifically, when rg is not significantly different from 1 (filter 1a) AND h2.sub1 is not clearly different from h2.sub2 (filter 1b and 1c), the triangle will not be plotted. In some occasions, a triangle will not be plotted while it would have been plotted with larger GWAS sample sizes (and therefore smaller standard errors). 
+    
+Filter 1a:
+The genetic correlation between With anxiety_MDD controls' and 'without anxiety_MDD controls' is significantly different from 1
+The upper bound is calculated as 0.8451 (the genetic correlation) + 1.96 * 0.072 (se) = 0.98622
+    
+Filter 1b:
+The heritability of 'With anxiety_MDD controls' does not lie within the confidence intervals of the heritability of 'without anxiety_MDD controls'
+The heritability of With anxiety_MDD controls is 0.1394, the interval of without anxiety_MDD controls is (0.061 - 0.099)
+    
+Filter 1c:
+The heritability of 'without anxiety_MDD controls' does not lie within the confidence intervals of the heritability of 'With anxiety_MDD controls'
+The heritability of 'without anxiety_MDD controls' is 0.0798, the interval is (0.111 - 0.168)
+    
+--> Filter 1 is passed: subgroups are genetically different from each other
+    
+Filter 2:
+The heritability of 'With anxiety_MDD controls' is significantly different from 0
+The heritability is 0.1394 with a lower bound of the confidence interval of 0.111
+--> Filter 2 is passed
+    
+Filter 3:
+The heritability of 'without anxiety_MDD controls' is significantly different from 0
+The heritabiltiy is 0.0798 where the lower bound of the confidence interval is 0.061
+--> Filter 3 is passed
+    
+    
+Optional double checks
+------------------------------------------------------------
+Double check 1:
+GDVIS calculated the heritability of With anxiety versus without anxiety as 0.0409
+The LDSC estimated value provided as input is 0.045 (se = 0.0166)
+The GDVIS value lies within the 95% CI 0.045 +- 1.96 * 0.0166.
+The difference between 0.0409 and 0.045 is -0.0041, this is -0.245 * se.
+    
+Double check 2:
+GDVIS calculated the heritability of allcases versus MDD controls as 0.0933
+No optional input for this check was provided. 
+    
+Double check 3a:
+GDVIS calculated the genetic correlation between With anxiety.vs.MDD controls and With anxiety.vs.without anxiety as 0.6654
+The LDSC estimated value provided as input is 0.6503 (se = 0.0752)
+The GDVIS value lies within the 95% CI +- 1.96 * 0.0752.
+The difference between 0.6654 and 0.6503 is 0.0151, this is 0.2014 * se.
+    
+Double check 3b:
+GDVIS calculated the genetic correlation between without anxiety.vs.MDD controls and With anxiety.vs.without anxiety as 0.1633
+The LDSC estimated value provided as input is 0.1302 (se = 0.187)
+The GDVIS value lies within the 95%  CI +- 1.96 * 0.0752.
+The difference between 0.1633 and 0.1302 is 0.0331, this is 0.177 * se.
+    
+Double check 4a:
+GDVIS calculated the genetic correlation between allcases.vs.MDD controls and With anxiety.vs.MDD controls as 0.9535
+The LDSC estimated value provided as input is 0.9504 (se = 0.0235)
+The GDVIS value lies within the 95% CI +- 1.96 * 0.0235.
+The difference between 0.9535 and 0.9504 is 0.0031, this is -0.245 * se.
+    
+Double check 4b:
+GDVIS calculated the genetic correlation between allcases.vs.MDD controls and without anxiety.vs.MDD controls is calculated to be 0.9669
+The LDSC estimated value provided as input is 0.9686 (se = 0.0153)
+The GDVIS value lies within the CI +- 1.96 * 0.0153.
+The difference between 0.9669 and 0.9686 is -0.0017, this is -0.245 * se.
+    

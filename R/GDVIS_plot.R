@@ -25,7 +25,7 @@ temp_triangle_env$CD.triangle.output.list <- NULL
 load(input_triangle_parameters, envir = temp_triangle_env)
 
 # Extract the list
-if (is.null(temp_triangle_env$triangle.output.list) == TRUE & is.null(temp_triangle_env$double.triangle.output.list) == TRUE & is.null(temp_triangle_env$double.triangle.output.list) == TRUE) { temp_triangle_env$triangle.output.list }
+if (is.null(temp_triangle_env$triangle.output.list) == TRUE & is.null(temp_triangle_env$double.triangle.output.list) == TRUE & is.null(temp_triangle_env$CD.triangle.output.list) == TRUE) { temp_triangle_env$triangle.output.list }
 if (is.null(temp_triangle_env$triangle.output.list) == FALSE) { data.path <- temp_triangle_env$triangle.output.list }
 if (is.null(temp_triangle_env$double.triangle.output.list) == FALSE) { data.path <- temp_triangle_env$double.triangle.output.list }
 if (is.null(temp_triangle_env$CD.triangle.output.list) == FALSE) { data.path <- temp_triangle_env$CD.triangle.output.list }
@@ -41,7 +41,7 @@ list2env(data.path, envir = temp_triangle_env)
 # Redirect to correct plot function
 
 ## 2D
-if (temp_triangle_env$plot_3D == FALSE & temp_triangle_env$plot_3D == FALSE & temp_triangle_env$plot_2D.2D == FALSE) {
+if (temp_triangle_env$plot_3D == FALSE & temp_triangle_env$plot_CD == FALSE & temp_triangle_env$plot_2D.2D == FALSE) {
   return(GDVIS::GDVIS_plot_2D(input_triangle_parameters, x_lower = x_lower, x_upper = x_upper, y_lower = y_lower, y_upper = y_upper))
 }
 
